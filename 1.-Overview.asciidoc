@@ -1,0 +1,26 @@
+Redisson is the Redis Java Client and Real-Time Data Platform. It is fully compatible with https://valkey.io[Valkey], providing the most convenient and easiest way to work with Redis and Valkey. Redisson objects provide an abstraction layer between Redis and your Java code, which allowing maintain focus on data modeling and application logic.
+
+Redisson is compatible with the following Redis cloud providers: +
+*
+https://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Replication.html[AWS
+ElastiCache] +
+*
+https://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.html[AWS
+ElastiCache Cluster] +
+* https://azure.microsoft.com/en-us/services/cache/[Azure Redis Cache] +
+* https://cloud.google.com/memorystore/docs/redis/[Google Cloud
+Memorystore for Redis] +
+* https://www.huaweicloud.com/en-us/product/dcs.html[HUAWEI Distributed
+Cache Service for Redis] +
+* https://aiven.io/redis[Aiven Redis hosting] *
+https://docs.redislabs.com/latest/rs/administering/designing-production/networking/multiple-active-proxy/[RLEC
+Multiple Active Proxy] * and many others.
+
+Use the https://github.com/redisson/redisson/wiki/11.-Redis-commands-mapping[Redis
+commands mapping] table to find the Redisson method for a particular Redis command.
+
+Redisson is Based on the http://netty.io/[Netty] framework, and is http://redis.io[Redis] 3.0+
+and JDK 1.8+ compatible.
+
+Try *https://redisson.pro[Redisson PRO]* with *advanced features* and
+*support by SLA*.
