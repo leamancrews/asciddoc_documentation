@@ -183,7 +183,7 @@ Default value: `TransportMode.NIO`
 
 Available values:
  
-* `TransportMode.NIO`, 
+* `TransportMode.NIO` 
 * `TransportMode.EPOLL` - requires `netty-transport-native-epoll` lib in
 classpath 
 * `TransportMode.KQUEUE` - requires `netty-transport-native-kqueue` lib
@@ -232,11 +232,11 @@ Default value:
 
 Allows for specifying a customized implementation of https://github.com/netty/netty/blob/4.1/resolver-dns/src/main/java/io/netty/resolver/dns/DnsAddressResolverGroup.java[DnsAddressResolverGroup].
 
-Available implementations: 
-* `org.redisson.connection.DnsAddressResolverGroupFactory` - uses the default DNS servers list provided by OS. *
-`org.redisson.connection.SequentialDnsAddressResolverFactory` - uses the default DNS servers list provided by OS and allows to control
-concurrency level of requests to DNS servers. *
-`org.redisson.connection.RoundRobinDnsAddressResolverGroupFactory` - uses the default DNS servers list provided by OS in round robin mode.
+Available implementations:
+ 
+* `org.redisson.connection.DnsAddressResolverGroupFactory` - uses the default DNS servers list provided by OS. 
+* `org.redisson.connection.SequentialDnsAddressResolverFactory` - uses the default DNS servers list provided by OS and allows to control concurrency level of requests to DNS servers. 
+* `org.redisson.connection.RoundRobinDnsAddressResolverGroupFactory` - uses the default DNS servers list provided by OS in round robin mode.
 
 === useScriptCache
 
@@ -282,8 +282,11 @@ Defines the Micrometer statistics collection mode.
 
 _This setting is available only in https://redisson.pro[Redisson PRO] edition._
 
-Available values: 
-* `ALL` - collect both Redis and Redisson objects statistics * `REDIS` - collect only Redis statistics * `OBJECTS` - collect only Redisson objects statistics
+Available values:
+ 
+* `ALL` - collect both Redis and Redisson objects statistics 
+* `REDIS` - collect only Redis statistics 
+* `OBJECTS` - collect only Redisson objects statistics
 
 === meterRegistryProvider
 
@@ -312,7 +315,8 @@ application-specific (except for the `NORMAL` value) it’s recommended to try a
 _This setting is available only in https://redisson.pro[Redisson PRO]
 edition._
 
-Available values: 
+Available values:
+ 
 * `HIGHER_THROUGHPUT` - switches command processor engine to *higher
 throughput* mode 
 * `LOWER_LATENCY_AUTO` - switches command processor
@@ -329,7 +333,8 @@ processor engine to *lower latency* mode with predefined settings set #1
 
 Cluster mode can be used with any hosting.
 
-Compatible with: 
+Compatible with:
+ 
 * https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html#WhatIs.Clusters[AWS
 ElastiCache Cluster] 
 * https://aws.amazon.com/memorydb[Amazon MemoryDB]
@@ -400,6 +405,7 @@ edition._
 Default value: `SLAVE`
 
 Set node type used for read operations. Available values: 
+
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES areavailable, 
 * `MASTER` - Read from master node, 
 * `MASTER_SLAVE` - Read from master and slave nodes
@@ -409,6 +415,7 @@ Set node type used for read operations. Available values:
 Default value: `MASTER`
 
 Set node type used for subscription operations. Available values: 
+
 * `SLAVE` - Subscribe to slave nodes, 
 * `MASTER` - Subscribe to master node,
 
@@ -417,6 +424,7 @@ Set node type used for subscription operations. Available values:
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available implementations: 
+
 * `org.redisson.connection.balancer.CommandsLoadBalancer` 
 * `org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
 * `org.redisson.connection.balancer.RoundRobinLoadBalancer` 
@@ -520,6 +528,7 @@ node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
 Available implementations: 
+
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval (in milliseconds). Default is 180000 milliseconds. 
@@ -743,6 +752,7 @@ transportMode: "NIO"
 With Replicated mode, the role of each node is polled to determine if a failover occurred, resulting in a new master.
 
 Compatible with: 
+
 * https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.html[AWS
 ElastiCache] (non-clustered) 
 * https://azure.microsoft.com/en-us/services/cache/[Azure Redis Cache]
@@ -1429,7 +1439,8 @@ once could be added.
 
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: 
+Set node type used for read operations. Available values:
+ 
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
 available, 
 * `MASTER` - Read from master node, 
@@ -1439,7 +1450,8 @@ available,
 
 Default value: `SLAVE`
 
-Set node type used for subscription operations. Available values: 
+Set node type used for subscription operations. Available values:
+ 
 * `SLAVE` - Subscribe to slave nodes, 
 * `MASTER` - Subscribe to master node,
 
@@ -1448,7 +1460,8 @@ Set node type used for subscription operations. Available values:
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
-implementations: 
+implementations:
+ 
 * `org.redisson.connection.balancer.CommandsLoadBalancer` 
 * `org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
 * `org.redisson.connection.balancer.RoundRobinLoadBalancer` 
@@ -1825,7 +1838,8 @@ once could be added. Use `rediss://` protocol for SSL connection.
 
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: 
+Set node type used for read operations. Available values:
+ 
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
 available, 
 * `MASTER` - Read from master node, 
@@ -1835,7 +1849,8 @@ available,
 
 Default value: `SLAVE`
 
-Set node type used for subscription operations. Available values: 
+Set node type used for subscription operations. Available values:
+ 
 * `SLAVE` - Subscribe to slave nodes, 
 * `MASTER` - Subscribe to master node,
 
@@ -1844,7 +1859,8 @@ Set node type used for subscription operations. Available values:
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
-implementations: 
+implementations:
+ 
 * `org.redisson.connection.balancer.CommandsLoadBalancer` 
 * `org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
 * `org.redisson.connection.balancer.RoundRobinLoadBalancer` 
@@ -2111,7 +2127,6 @@ property names.
 
 [source,yaml]
 ----
----
 masterSlaveServersConfig:
   idleConnectionTimeout: 10000
   connectTimeout: 10000
@@ -2161,7 +2176,8 @@ Failed nodes detection is managed by
 https://github.com/redisson/redisson/wiki/2.-Configuration#scanmode[scanMode]
 setting.
 
-Compatible with: 
+Compatible with:
+ 
 * https://aws.amazon.com/elasticache/features/#Serverless[AWS
 Elasticache Serverless] 
 *
@@ -2239,7 +2255,8 @@ Redis connection maximum pool size.
 
 Default value: `PING`
 
-Defines scan mode to detect failed Redis nodes. Available values: 
+Defines scan mode to detect failed Redis nodes. Available values:
+ 
 * `PING` - Each Redis node is checked using PING command. If Redis node
 unable to response then it considered as a failed node. 
 * `PUBSUB` - Messages are sent over pubsub channel per Redis node and
@@ -2250,8 +2267,10 @@ subscribe or receive message then it considered as a failed node.
 
 Default value: `ALL_ACTIVE`
 
-Defines proxy mode. 
+Defines proxy mode.
+ 
 Available values: 
+
 * `FIRST_ACTIVE` - Primary (active) database is a first address in the
 list of addresses and the rest are idle secondary nodes used after
 failover. 
@@ -2537,8 +2556,8 @@ secondary Redis Cluster is managed by `replicationMode` setting.
 Cluster with all available master nodes becomes the primary. Master
 nodes availability scan interval is defined by `scanInterval` setting.
 
-Compatible with: *
-https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html[AWS
+Compatible with: 
+* https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html[AWS
 Redis Global Datastore].
 
 _This feature is available only in https://redisson.pro[Redisson PRO]
@@ -2610,7 +2629,8 @@ Cache] structures.
 
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: 
+Set node type used for read operations. Available values:
+ 
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
 available, 
 * `MASTER` - Read from master node, 
@@ -2654,6 +2674,7 @@ Defines replication of the primary Redis Cluster with secondary Redis
 Clusters.
 
 Available values: 
+
 `NONE` - No replication executed by Redisson. Replication should be
 executed on Redis side, 
 `SYNC` - Each Redisson method invocation which modifies data is
@@ -2667,6 +2688,7 @@ Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
 implementations: 
+ 
 `org.redisson.connection.balancer.CommandsLoadBalancer` 
 `org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
 `org.redisson.connection.balancer.RoundRobinLoadBalancer` 
@@ -2679,8 +2701,10 @@ Default value: `AUTO`
 Defines primary Redis Cluster selection mode.
 
 Available values: 
+
 * `FIRST_PRIMARY` - Primary database is the first address in the list of
-addresses * `AUTO` - Primary database is selected if all master nodes
+addresses 
+* `AUTO` - Primary database is selected if all master nodes
 are available
 
 ==== subscriptionConnectionMinimumIdleSize
@@ -3064,7 +3088,8 @@ once could be added.
 
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: 
+Set node type used for read operations. Available values:
+ 
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
 available, 
 * `MASTER` - Read from master node, 
@@ -3074,7 +3099,8 @@ available,
 
 Default value: `SLAVE`
 
-Set node type used for subscription operations. Available values: 
+Set node type used for subscription operations. Available values:
+ 
 * `SLAVE` - Subscribe to slave nodes, 
 * `MASTER` - Subscribe to master node,
 
