@@ -181,7 +181,8 @@ Only `io.netty.channel.epoll.EpollEventLoopGroup`, `io.netty.channel.kqueue.KQue
 
 Default value: `TransportMode.NIO`
 
-Available values: 
+Available values:
+ 
 * `TransportMode.NIO`, 
 * `TransportMode.EPOLL` - requires `netty-transport-native-epoll` lib in
 classpath 
