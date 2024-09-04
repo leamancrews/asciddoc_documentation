@@ -2961,7 +2961,6 @@ names.
 
 [source,yaml]
 ----
----
 multiClusterServersConfig:
   idleConnectionTimeout: 10000
   connectTimeout: 10000
