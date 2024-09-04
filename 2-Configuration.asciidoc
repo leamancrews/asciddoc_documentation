@@ -1075,7 +1075,6 @@ names are matched with `ReplicatedServersConfig` and `Config` object property na
 
 [source,yaml]
 ----
----
 replicatedServersConfig:
   idleConnectionTimeout: 10000
   connectTimeout: 10000
@@ -1356,7 +1355,6 @@ Below is single instance configuration example in YAML format. All property name
 
 [source,yaml]
 ----
----
 singleServerConfig:
   idleConnectionTimeout: 10000
   connectTimeout: 10000
@@ -2523,7 +2521,6 @@ names.
 
 [source,yaml]
 ----
----
 proxyServersConfig:
   idleConnectionTimeout: 10000
   connectTimeout: 10000
