@@ -313,12 +313,14 @@ edition._
 
 Available values: +
 * `HIGHER_THROUGHPUT` - switches command processor engine to *higher
-throughput* mode * `LOWER_LATENCY_AUTO` - switches command processor
+throughput* mode 
+* `LOWER_LATENCY_AUTO` - switches command processor
 engine to *lower latency* mode and detect optimal settings automatically
 * `LOWER_LATENCY_MODE_3` - switches command processor engine to *lower
-latency* mode with predefined settings set #3 * `LOWER_LATENCY_MODE_2` -
-switches command processor engine to *lower latency* mode with
-predefined settings set #2 * `LOWER_LATENCY_MODE_1` - switches command
+latency* mode with predefined settings set #3 
+* `LOWER_LATENCY_MODE_2` - switches command processor engine to *lower latency* mode with
+predefined settings set #2 
+* `LOWER_LATENCY_MODE_1` - switches command
 processor engine to *lower latency* mode with predefined settings set #1
 * `NORMAL` - switches command processor engine to normal mode
 
@@ -327,9 +329,9 @@ processor engine to *lower latency* mode with predefined settings set #1
 Cluster mode can be used with any hosting.
 
 Compatible with: +
-*
-https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html#WhatIs.Clusters[AWS
-ElastiCache Cluster] * https://aws.amazon.com/memorydb[Amazon MemoryDB]
+* https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html#WhatIs.Clusters[AWS
+ElastiCache Cluster] 
+* https://aws.amazon.com/memorydb[Amazon MemoryDB]
 * https://azure.microsoft.com/en-us/services/cache/[Azure Redis Cache]
 
 Programmatic config example:
@@ -349,7 +351,7 @@ RedissonClient redisson = Redisson.create(config);
 === 2.4.1. Cluster settings
 
 Documentation covering Redis server cluster configuration is https://redis.io/topics/cluster-tutorial[here]. +
-Cluster connection mode is activated by follow line: +
+Cluster connection mode is activated by the following line: +
 `ClusterServersConfig clusterConfig = config.useClusterServers();`
 
 `ClusterServersConfig` settings listed below:
@@ -460,7 +462,10 @@ Redis `slave' node minimum idle connection amount for each slave node.
 Default value: `64`
 
 Redis `slave' node maximum connection pool size for each slave node
-##### masterConnectionMinimumIdleSize Default value: `24`
+
+==== masterConnectionMinimumIdleSize 
+
+Default value: `24`
 
 Minimum idle connections amount per Redis master node.
 
@@ -468,18 +473,26 @@ Minimum idle connections amount per Redis master node.
 
 Default value: `24`
 
-Redis `master' node maximum connection pool size #####
-idleConnectionTimeout Default value: `10000`
+Redis `master' node maximum connection pool size 
 
- pooled connection is not used for a timeout time and the current connections
-amount is bigger than the minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. #####
-connectTimeout Default value: `10000`
+==== idleConnectionTimeout 
 
-Timeout in milliseconds during connecting to any Redis server. #####
-timeout Default value: `3000`
+Default value: `10000`
 
-Redis server response timeout in milliseconds. Starts countdown after a Redis command is successfully sent. ##### retryAttempts Default value:
-`3`
+If a pooled connection is not used for a timeout time and the current connections
+amount is bigger than the minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
+
+==== connectTimeout Default value: `10000`
+
+Timeout in milliseconds during connecting to any Redis server. 
+
+==== timeout Default value: `3000`
+
+Redis server response timeout in milliseconds. Starts countdown after a Redis command is successfully sent. 
+
+==== retryAttempts 
+
+Default value: `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -547,7 +560,11 @@ Subscriptions per subscriber connection limit. Used by `RTopic`,
 `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
 `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`,
 `RLocalCachedMap`, `RLocalCachedMapCache` objectsi, and Hibernate Local
-Cached Region Factories. ##### clientName Default value: `null`
+Cached Region Factories. 
+
+==== clientName 
+
+Default value: `null`
 
 Name of client connection.
 
@@ -683,9 +700,9 @@ Applied to all Redis commands.
 
 Below is a cluster configuration example in YAML format. All property
 names matched with `ClusterServersConfig` and `Config` object property names.
+
 [source,yaml]
 ----
----
 clusterServersConfig:
   idleConnectionTimeout: 10000
   connectTimeout: 10000
@@ -724,12 +741,12 @@ transportMode: "NIO"
 
 With Replicated mode, the role of each node is polled to determine if a failover occurred, resulting in a new master.
 
-Compatible with: *
-https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.html[AWS
-ElastiCache] (non-clustered) *
-https://azure.microsoft.com/en-us/services/cache/[Azure Redis Cache]
-(non-clustered) *
-https://cloud.google.com/memorystore/docs/redis/high-availability[Google
+Compatible with: 
+* https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.html[AWS
+ElastiCache] (non-clustered) 
+* https://azure.microsoft.com/en-us/services/cache/[Azure Redis Cache]
+(non-clustered) 
+* https://cloud.google.com/memorystore/docs/redis/high-availability[Google
 Cloud Memorystore for Redis High availability]
 
 _Use https://redisson.pro[Redisson PRO] if a single host is bound to
@@ -786,7 +803,10 @@ implementations: +
 Default value: `false`
 
 Check each Redis hostname defined in the configuration for IP address
-changes during the scan process ##### subscriptionConnectionMinimumIdleSize
+changes during the scan process 
+
+==== subscriptionConnectionMinimumIdleSize
+
 Default value: `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
@@ -811,10 +831,16 @@ Cached Region Factories.
 Default value: `24`
 
 Redis `slave' node minimum idle connection amount for each slave node
-##### slaveConnectionPoolSize Default value: `64`
+
+==== slaveConnectionPoolSize 
+
+Default value: `64`
 
 Redis `slave' node maximum connection pool size for each slave node
-##### masterConnectionMinimumIdleSize Default value: `24`
+
+==== masterConnectionMinimumIdleSize 
+
+Default value: `24`
 
 The minimum idle connection amount is per Redis master node.
 
@@ -822,15 +848,22 @@ The minimum idle connection amount is per Redis master node.
 
 Default value: `64`
 
-Redis `master' node maximum connection pool size #####
-idleConnectionTimeout Default value: `10000`
+Redis `master' node maximum connection pool size 
+
+==== idleConnectionTimeout 
+
+Default value: `10000`
 
 If pooled connection not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. ##### readMode
+closed and removed from pool. Value in milliseconds. 
+
+==== readMode
+
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: +
+Set node type used for read operations. Available values: 
++
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
 available, +
 * `MASTER` - Read from the master node, +
@@ -840,7 +873,8 @@ available, +
 
 Default value: `MASTER`
 
-Set node type used for subscription operations. Available values: +
+Set node type used for subscription operations. Available values: 
++
 * `SLAVE` - Subscribe to slave nodes, +
 * `MASTER` - Subscribe to the master node,
 
@@ -848,11 +882,17 @@ Set node type used for subscription operations. Available values: +
 
 Default value: `10000`
 
-Timeout during connecting to any Redis server. ##### timeout Default
-value: `3000`
+Timeout during connecting to any Redis server. 
 
-Redis server response timeout. It starts to count down after a Redis command is successfully sent. Value in milliseconds. ##### retryAttempts Default
-value: `3`
+==== timeout 
+
+Default value: `3000`
+
+Redis server response timeout. It starts to count down after a Redis command is successfully sent. Value in milliseconds. 
+
+==== retryAttempts
+ 
+Default value: `3`
 
 An error will be thrown if a Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it is sent successfully, then *timeout* will be
@@ -862,8 +902,11 @@ started.
 
 Default value: `1500`
 
-Time interval after which another attempt to send a Redis command will be executed. Value in milliseconds. #####
-failedSlaveReconnectionInterval Default value: `3000`
+Time interval after which another attempt to send a Redis command will be executed. Value in milliseconds. 
+
+==== failedSlaveReconnectionInterval 
+
+Default value: `3000`
 
 The interval of Redis Slave reconnection attempts when excluded from
 the internal list of available servers. On each timeout event, Redisson tries
@@ -877,7 +920,8 @@ Defines failed Redis Slave node detector object, which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
-Available implementations: +
+Available implementations: 
++
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in the defined `checkInterval.`
 interval in milliseconds. The default is 180000 milliseconds. +
@@ -895,11 +939,16 @@ milliseconds.
 
 Default value: `0`
 
-Database index used for Redis connection ##### password Default value:
-`null`
+Database index used for Redis connection 
 
-Password for Redis server authentication. ##### username Default value:
-`null`
+==== password 
+Default value: `null`
+
+Password for Redis server authentication. 
+
+==== username 
+
+Default value: `null`
 
 Username for Redis server authentication. Requires Redis 6.0+
 
@@ -1127,13 +1176,23 @@ Default value: `10000`
 
 If pooled connection not used for a timeout time and current connections
 amount bigger than minimum idle connection pool size, then it will
-closed and removed from pool. Value in milliseconds. #####
-connectTimeout Default value: `10000`
+closed and removed from pool. Value in milliseconds. 
 
-Timeout during connecting to any Redis server. ##### timeout Default
-value: `3000`
+==== connectTimeout 
 
-Redis server response timeout. It starts to count down once a Redis command is successfully sent. Value in milliseconds. ##### retryAttempts Default value: `3`
+Default value: `10000`
+
+Timeout during connecting to any Redis server. 
+
+==== timeout 
+
+Default value: `3000`
+
+Redis server response timeout. It starts to count down once a Redis command is successfully sent. Value in milliseconds. 
+
+==== retryAttempts 
+
+Default value: `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it is sent successfully, then *timeout* will be
@@ -1144,10 +1203,17 @@ started.
 Default value: `1500`
 
 Time interval after which another attempt to send the Redis command will
-be executed. Value in milliseconds. ##### database Default value: `0`
+be executed. Value in milliseconds. 
 
-Database index used for Redis connection ##### password Default value:
-`null`
+==== database 
+
+Default value: `0`
+
+Database index used for Redis connection 
+
+==== password 
+
+Default value: `null`
 
 Password for Redis server authentication.
 
@@ -1323,7 +1389,7 @@ RedissonClient redisson = Redisson.create(config);
 Documentation covering Redis server sentinel configuration is
 https://redis.io/topics/sentinel[here].
 
-Sentinel connection mode is activated by follow line: +
+Sentinel connection mode is activated by the following line: +
 `SentinelServersConfig sentinelConfig = config.useSentinelServers();`
 
 `SentinelServersConfig` settings listed below:
@@ -1413,10 +1479,16 @@ Cached Region Factories.
 Default value: `24`
 
 Redis `slave' node minimum idle connection amount for each slave node
-##### slaveConnectionPoolSize Default value: `64`
+
+==== slaveConnectionPoolSize 
+
+Default value: `64`
 
 Redis `slave' node maximum connection pool size for each slave node
-##### masterConnectionMinimumIdleSize Default value: `24`
+
+==== masterConnectionMinimumIdleSize 
+
+Default value: `24`
 
 Minimum idle connections amount per Redis master node.
 
@@ -1424,20 +1496,32 @@ Minimum idle connections amount per Redis master node.
 
 Default value: `64`
 
-Redis `master' node maximum connection pool size #####
-idleConnectionTimeout Default value: `10000`
+Redis `master' node maximum connection pool size 
+
+==== idleConnectionTimeout 
+
+Default value: `10000`
 
 If pooled connection not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. #####
-connectTimeout Default value: `10000`
+closed and removed from pool. Value in milliseconds. 
 
-Timeout during connecting to any Redis server. ##### timeout Default
-value: `3000`
+==== connectTimeout 
+
+Default value: `10000`
+
+Timeout during connecting to any Redis server. 
+
+==== timeout 
+
+Default value: `3000`
 
 Redis server response timeout. Starts to count down when Redis command
-was successfully sent. Value in milliseconds. ##### retryAttempts Default
-value: `3`
+was successfully sent. Value in milliseconds. 
+
+==== retryAttempts
+
+Default value: `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -1448,8 +1532,11 @@ started.
 Default value: `1500`
 
 Time interval after which another one attempt to send Redis command will
-be executed. Value in milliseconds. #####
-failedSlaveReconnectionInterval Default value: `3000`
+be executed. Value in milliseconds. 
+
+==== failedSlaveReconnectionInterval 
+
+Default value: `3000`
 
 Interval of Redis Slave reconnection attempts when it was excluded from
 internal list of available servers. On each timeout event Redisson tries
@@ -1463,7 +1550,8 @@ Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
-Available implementations: +
+Available implementations: 
++
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. +
@@ -1709,7 +1797,7 @@ RedissonClient redisson = Redisson.create(config);
 Documentation covering Redis server master/slave configuration is
 https://redis.io/topics/replication[here].
 
-Master slave connection mode is activated by follow line: +
+Master slave connection mode is activated by the following line: +
 `MasterSlaveServersConfig masterSlaveConfig = config.useMasterSlaveServers();`
 
 `MasterSlaveServersConfig` settings listed below:
@@ -1787,10 +1875,16 @@ Cached Region Factories.
 Default value: `24`
 
 Redis `slave' node minimum idle connection amount for each slave node
-##### slaveConnectionPoolSize Default value: `64`
+
+==== slaveConnectionPoolSize 
+
+Default value: `64`
 
 Redis `slave' node maximum connection pool size for each slave node
-##### masterConnectionMinimumIdleSize Default value: `24`
+
+==== masterConnectionMinimumIdleSize 
+
+Default value: `24`
 
 Minimum idle connections amount per Redis master node.
 
@@ -1798,20 +1892,32 @@ Minimum idle connections amount per Redis master node.
 
 Default value: `64`
 
-Redis `master' node maximum connection pool size #####
-idleConnectionTimeout Default value: `10000`
+Redis `master' node maximum connection pool size 
+
+==== idleConnectionTimeout 
+
+Default value: `10000`
 
 If pooled connection not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. #####
-connectTimeout Default value: `10000`
+closed and removed from pool. Value in milliseconds. 
 
-Timeout during connecting to any Redis server. ##### timeout Default
-value: `3000`
+==== connectTimeout 
+
+Default value: `10000`
+
+Timeout during connecting to any Redis server. 
+
+==== timeout 
+
+Default value: `3000`
 
 Redis server response timeout. Starts to count down when Redis command
-was successfully sent. Value in milliseconds. ##### retryAttempts Default
-value: `3`
+was successfully sent. Value in milliseconds. 
+
+==== retryAttempts 
+
+Default value: `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -1822,8 +1928,11 @@ started.
 Default value: `1500`
 
 Time interval after which another one attempt to send Redis command will
-be executed. Value in milliseconds. #####
-failedSlaveReconnectionInterval Default value: `3000`
+be executed. Value in milliseconds. 
+
+==== failedSlaveReconnectionInterval 
+
+Default value: `3000`
 
 Interval of Redis Slave reconnection attempts when it was excluded from
 internal list of available servers. On each timeout event Redisson tries
@@ -1837,7 +1946,8 @@ Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
-Available implementations: +
+Available implementations: 
++
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. +
@@ -1855,11 +1965,17 @@ milliseconds.
 
 Default value: `0`
 
-Database index used for Redis connection ##### password Default value:
-`null`
+Database index used for Redis connection 
 
-Password for Redis server authentication. ##### username Default value:
-`null`
+==== password 
+
+Default value: `null`
+
+Password for Redis server authentication. 
+
+==== username 
+
+Default value: `null`
 
 Username for Redis server authentication. Requires Redis 6.0+
 
@@ -1916,7 +2032,7 @@ Default value: `JDK`
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
 OPENSSL considered as faster implementation and requires
 https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-tcnative-boringssl-static]
-to be added in classpath.
+to be added in the classpath.
 
 ==== sslTruststore
 
@@ -2073,7 +2189,7 @@ RedissonClient redisson = Redisson.create(config);
 
 === 2.9.1. Proxy mode settings
 
-Proxy servers connection mode is activated by follow line: +
+Proxy servers connection mode is activated by the following line: +
 `ProxyServersConfig proxyConfig = config.useProxyServers();`
 
 `ProxyServersConfig` settings listed below:
@@ -2166,15 +2282,24 @@ Default value: `10000`
 
 If pooled connection not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. #####
-connectTimeout Default value: `10000`
+closed and removed from pool. Value in milliseconds. 
 
-Timeout during connecting to any Redis server. ##### timeout Default
-value: `3000`
+==== connectTimeout 
+
+Default value: `10000`
+
+Timeout during connecting to any Redis server. 
+
+==== timeout 
+
+Default value: `3000`
 
 Redis server response timeout. Starts to count down when Redis command
-was successfully sent. Value in milliseconds. ##### retryAttempts Default
-value: `3`
+was successfully sent. Value in milliseconds. 
+
+==== retryAttempts 
+
+Default value: `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -2185,7 +2310,11 @@ started.
 Default value: `1500`
 
 Time interval after which another one attempt to send Redis command will
-be executed. Value in milliseconds. ##### database Default value: `0`
+be executed. Value in milliseconds. 
+
+==== database 
+
+Default value: `0`
 
 Database index used for Redis connection
 
@@ -2205,7 +2334,8 @@ Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
-Available implementations: +
+Available implementations: 
++
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. +
@@ -2428,7 +2558,8 @@ RedissonClient redisson = Redisson.create(config);
 
 === 2.10.1. Multi Cluster settings
 
-Multi clusters connection mode is activated by follow line: +
+Multi clusters connection mode is activated by the following line: 
++
 `ClusterServersConfig clusterConfig = config.useMultiClusterServers();`
 
 `ClusterServersConfig` settings listed below:
@@ -2570,8 +2701,11 @@ Maximum connection pool size for subscription (pub/sub) channels. Used
 by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
 `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`,
 `RLocalCachedMap`, `RLocalCachedMapCache` objects and Hibernate Local
-Cached Region Factories. ##### slaveConnectionMinimumIdleSize Default
-value: `24`
+Cached Region Factories. 
+
+==== slaveConnectionMinimumIdleSize 
+
+Default value: `24`
 
 Redis `slave' node minimum idle connection amount for each slave node.
 
@@ -2580,7 +2714,10 @@ Redis `slave' node minimum idle connection amount for each slave node.
 Default value: `64`
 
 Redis `slave' node maximum connection pool size for each slave node
-##### masterConnectionMinimumIdleSize Default value: `24`
+
+==== masterConnectionMinimumIdleSize 
+
+Default value: `24`
 
 Minimum idle connections amount per Redis master node.
 
@@ -2588,20 +2725,30 @@ Minimum idle connections amount per Redis master node.
 
 Default value: `24`
 
-Redis `master' node maximum connection pool size #####
-idleConnectionTimeout Default value: `10000`
+Redis `master' node maximum connection pool size 
+
+==== idleConnectionTimeout 
+
+Default value: `10000`
 
 If pooled connection not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. #####
-connectTimeout Default value: `10000`
+closed and removed from pool. Value in milliseconds. 
 
-Timeout in milliseconds during connecting to any Redis server. #####
-timeout Default value: `3000`
+==== connectTimeout Default value: `10000`
+
+Timeout in milliseconds during connecting to any Redis server. 
+
+==== timeout 
+
+Default value: `3000`
 
 Redis server response timeout in milliseconds. Starts to count down when
-Redis command was successfully sent. ##### retryAttempts Default value:
-`3`
+Redis command was successfully sent. 
+
+==== retryAttempts 
+
+Default value: `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -2630,7 +2777,8 @@ Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
-Available implementations: +
+Available implementations: 
++
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. +
@@ -2861,7 +3009,7 @@ RedissonClient redisson = Redisson.create(config);
 Documentation covering Redis server sentinel configuration is
 https://redis.io/topics/sentinel[here].
 
-Multi Sentinel connection mode is activated by follow line: +
+Multi Sentinel connection mode is activated by the following line: +
 `MultiSentinelServersConfig sentinelConfig = config.useMultiSentinelServers();`
 
 `MultiSentinelServersConfig` settings listed below:
@@ -2966,10 +3114,16 @@ Cached Region Factories.
 Default value: `24`
 
 Redis `slave' node minimum idle connection amount for each slave node
-##### slaveConnectionPoolSize Default value: `64`
+
+==== slaveConnectionPoolSize 
+
+Default value: `64`
 
 Redis `slave' node maximum connection pool size for each slave node
-##### masterConnectionMinimumIdleSize Default value: `24`
+
+==== masterConnectionMinimumIdleSize 
+
+Default value: `24`
 
 Minimum idle connections amount per Redis master node.
 
@@ -2977,19 +3131,31 @@ Minimum idle connections amount per Redis master node.
 
 Default value: `64`
 
-Redis `master' node maximum connection pool size #####
-idleConnectionTimeout Default value: `10000`
+Redis `master' node maximum connection pool size 
+
+==== idleConnectionTimeout 
+
+Default value: `10000`
 
 If pooled connection not used for a timeout time and current connections
-amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. #####
-connectTimeout Default value: `10000`
+amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
-Timeout during connecting to any Redis server. ##### timeout Default
-value: `3000`
+==== connectTimeout 
+
+Default value: `10000`
+
+Timeout during connecting to any Redis server. 
+
+==== timeout 
+
+Default value: `3000`
 
 Redis server response timeout. Starts to count down when Redis command
-was successfully sent. Value in milliseconds. ##### retryAttempts Default
-value: `3`
+was successfully sent. Value in milliseconds. 
+
+==== retryAttempts 
+
+Default value: `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -3000,8 +3166,11 @@ started.
 Default value: `1500`
 
 Time interval after which another one attempt to send Redis command will
-be executed. Value in milliseconds. #####
-failedSlaveReconnectionInterval Default value: `3000`
+be executed. Value in milliseconds. 
+
+==== failedSlaveReconnectionInterval 
+
+Default value: `3000`
 
 Interval of Redis Slave reconnection attempts when it was excluded from
 internal list of available servers. On each timeout event Redisson tries
@@ -3015,7 +3184,8 @@ Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
-Available implementations: +
+Available implementations: 
++
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. +
