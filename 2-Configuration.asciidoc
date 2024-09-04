@@ -3396,7 +3396,6 @@ property names.
 
 [source,yaml]
 ----
----
 multiSentinelServersConfig:
   replicationMode: "ASYNC"
   idleConnectionTimeout: 10000
