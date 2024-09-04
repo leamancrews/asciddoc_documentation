@@ -43,7 +43,7 @@ Redisson can also be configured in a declarative way by using a user-supplied te
 
 === 2.2.1 YAML file-based configuration
 
-Redisson configuration could be stored in YAML format. +
+Redisson configuration could be stored in YAML format. 
 Use the `config.fromYAML` method to read the configuration stored in YAML format:
 
 [source,java]
@@ -107,7 +107,7 @@ java -cp redisson-all.jar org.redisson.config.PasswordCipher encode pass123 secr
 Output:
 
 ....
-{aes}M+TfpT4T6psLCfS+RHKT7Fx0j6r5wOX535G3NMnaphY=
+{aes}MTfpT4T6psLCfSRHKT7Fx0j6r5wOX535G3NMnaphY=
 ....
 
 The secret key file is defined through `secretKey` setting in the Redisson configuration YAML file and applied to all encrypted passwords.
@@ -118,7 +118,7 @@ Configuration YAML file example:
 ----
 singleServerConfig:
    address: "rediss://127.0.0.1:6379"
-   password: "{aes}M+TfpT4T6psLCfS+RHKT7Fx0j6r5wOX535G3NMnaphY="
+   password: "{aes}MTfpT4T6psLCfSRHKT7Fx0j6r5wOX535G3NMnaphY="
    sslTruststore: file:truststore
    sslTruststorePassword: "{aes}31paDOrhnyPfDxXPgqyLZF8QR5yJU3U1bZfhsuM4Ruo="
    secretKey: file:secret_key
@@ -146,7 +146,7 @@ Default value: `false`
 
 Defines whether Redisson connects to Redis only when the first Redis call is made or if Redisson connects during creation of the Redisson instance.
 
-`true` - connects to Redis only when the first Redis call is made +
+`true` - connects to Redis only when the first Redis call is made 
 `false` - connects to Redis upon Redisson instance creation
 
 === nettyThreads
@@ -181,10 +181,10 @@ Only `io.netty.channel.epoll.EpollEventLoopGroup`, `io.netty.channel.kqueue.KQue
 
 Default value: `TransportMode.NIO`
 
-Available values: +
-* `TransportMode.NIO`, +
+Available values: 
+* `TransportMode.NIO`, 
 * `TransportMode.EPOLL` - requires `netty-transport-native-epoll` lib in
-classpath +
+classpath 
 * `TransportMode.KQUEUE` - requires `netty-transport-native-kqueue` lib
 in classpath
 
@@ -231,7 +231,7 @@ Default value:
 
 Allows for specifying a customized implementation of https://github.com/netty/netty/blob/4.1/resolver-dns/src/main/java/io/netty/resolver/dns/DnsAddressResolverGroup.java[DnsAddressResolverGroup].
 
-Available implementations: +
+Available implementations: 
 * `org.redisson.connection.DnsAddressResolverGroupFactory` - uses the default DNS servers list provided by OS. *
 `org.redisson.connection.SequentialDnsAddressResolverFactory` - uses the default DNS servers list provided by OS and allows to control
 concurrency level of requests to DNS servers. *
@@ -281,7 +281,7 @@ Defines the Micrometer statistics collection mode.
 
 _This setting is available only in https://redisson.pro[Redisson PRO] edition._
 
-Available values: +
+Available values: 
 * `ALL` - collect both Redis and Redisson objects statistics * `REDIS` - collect only Redis statistics * `OBJECTS` - collect only Redisson objects statistics
 
 === meterRegistryProvider
@@ -311,7 +311,7 @@ application-specific (except for the `NORMAL` value) it’s recommended to try a
 _This setting is available only in https://redisson.pro[Redisson PRO]
 edition._
 
-Available values: +
+Available values: 
 * `HIGHER_THROUGHPUT` - switches command processor engine to *higher
 throughput* mode 
 * `LOWER_LATENCY_AUTO` - switches command processor
@@ -328,7 +328,7 @@ processor engine to *lower latency* mode with predefined settings set #1
 
 Cluster mode can be used with any hosting.
 
-Compatible with: +
+Compatible with: 
 * https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html#WhatIs.Clusters[AWS
 ElastiCache Cluster] 
 * https://aws.amazon.com/memorydb[Amazon MemoryDB]
@@ -350,8 +350,8 @@ RedissonClient redisson = Redisson.create(config);
 
 === 2.4.1. Cluster settings
 
-Documentation covering Redis server cluster configuration is https://redis.io/topics/cluster-tutorial[here]. +
-Cluster connection mode is activated by the following line: +
+Documentation covering Redis server cluster configuration is https://redis.io/topics/cluster-tutorial[here]. 
+Cluster connection mode is activated by the following line: 
 `ClusterServersConfig clusterConfig = config.useClusterServers();`
 
 `ClusterServersConfig` settings listed below:
@@ -398,27 +398,27 @@ edition._
 
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: +
-* `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES areavailable, +
-* `MASTER` - Read from master node, +
+Set node type used for read operations. Available values: 
+* `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES areavailable, 
+* `MASTER` - Read from master node, 
 * `MASTER_SLAVE` - Read from master and slave nodes
 
 ==== subscriptionMode
 
 Default value: `MASTER`
 
-Set node type used for subscription operations. Available values: +
-* `SLAVE` - Subscribe to slave nodes, +
+Set node type used for subscription operations. Available values: 
+* `SLAVE` - Subscribe to slave nodes, 
 * `MASTER` - Subscribe to master node,
 
 ==== loadBalancer
 
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
-Сonnection load balancer for multiple Redis servers. Available implementations: +
-* `org.redisson.connection.balancer.CommandsLoadBalancer` +
-* `org.redisson.connection.balancer.WeightedRoundRobinBalancer` +
-* `org.redisson.connection.balancer.RoundRobinLoadBalancer` +
+Сonnection load balancer for multiple Redis servers. Available implementations: 
+* `org.redisson.connection.balancer.CommandsLoadBalancer` 
+* `org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
+* `org.redisson.connection.balancer.RoundRobinLoadBalancer` 
 * `org.redisson.connection.balancer.RandomLoadBalancer`
 
 ==== subscriptionConnectionMinimumIdleSize
@@ -447,7 +447,7 @@ Cached Region Factories.
 Default value: `AUTO`
 
 Defines whether to use the sharded subscription feature available in Redis
-7.0+. Used by `RMapCache`, `RLocalCachedMap`, `RCountDownLatch`,
+7.0. Used by `RMapCache`, `RLocalCachedMap`, `RCountDownLatch`,
 `RLock`, `RPermitExpirableSemaphore`, `RSemaphore`, `RLongAdder`,
 `RDoubleAdder`, `Micronaut Session`, `Apache Tomcat Manager` objects.
 
@@ -518,10 +518,10 @@ Defines the failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
-Available implementations: +
+Available implementations: 
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
-interval (in milliseconds). Default is 180000 milliseconds. +
+interval (in milliseconds). Default is 180000 milliseconds. 
 * `org.redisson.client.FailedCommandsDetector` - marks Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval (in
@@ -542,7 +542,7 @@ Password for Redis server authentication.
 
 Default value: `null`
 
-Username for Redis server authentication. Requires Redis 6.0+
+Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
@@ -572,7 +572,7 @@ Name of client connection.
 
 Default value: `null`
 
-Defines an array of allowed SSL protocols. +
+Defines an array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
@@ -792,10 +792,10 @@ Replicated nodes scan interval in milliseconds.
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
-implementations: +
-`org.redisson.connection.balancer.CommandsLoadBalancer` +
-`org.redisson.connection.balancer.WeightedRoundRobinBalancer` +
-`org.redisson.connection.balancer.RoundRobinLoadBalancer` +
+implementations: 
+`org.redisson.connection.balancer.CommandsLoadBalancer` 
+`org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
+`org.redisson.connection.balancer.RoundRobinLoadBalancer` 
 `org.redisson.connection.balancer.RandomLoadBalancer`
 
 ==== monitorIPChanges
@@ -863,10 +863,10 @@ closed and removed from pool. Value in milliseconds.
 Default value: `SLAVE`
 
 Set node type used for read operations. Available values: 
-+
+
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
-available, +
-* `MASTER` - Read from the master node, +
+available, 
+* `MASTER` - Read from the master node, 
 * `MASTER_SLAVE` - Read from master and slave nodes
 
 ==== subscriptionMode
@@ -874,8 +874,8 @@ available, +
 Default value: `MASTER`
 
 Set node type used for subscription operations. Available values: 
-+
-* `SLAVE` - Subscribe to slave nodes, +
+
+* `SLAVE` - Subscribe to slave nodes, 
 * `MASTER` - Subscribe to the master node,
 
 ==== connectTimeout
@@ -921,10 +921,10 @@ node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
 Available implementations: 
-+
+
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in the defined `checkInterval.`
-interval in milliseconds. The default is 180000 milliseconds. +
+interval in milliseconds. The default is 180000 milliseconds. 
 * `org.redisson.client.FailedCommandsDetector` - marks Redis node as
 failed if it has a certain amount of command execution errors defined by
 `failedCommandsLimit` in the defined `checkInterval` interval in
@@ -950,7 +950,7 @@ Password for Redis server authentication.
 
 Default value: `null`
 
-Username for Redis server authentication. Requires Redis 6.0+
+Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
@@ -980,7 +980,7 @@ Name of client connection
 
 Default value: `null`
 
-Defines array of allowed SSL protocols. +
+Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
@@ -1119,7 +1119,7 @@ Documentation covering Redis single server configuration is
 https://redis.io/topics/config[here]. Multiple IP bindings for a single
 hostname are supported in https://github.com/redisson/redisson/wiki/2.-Configuration#29-proxy-mode[Proxy mode]
 
-Single server connection mode is activated by the following line: +
+Single server connection mode is activated by the following line: 
 `SingleServerConfig singleConfig = config.useSingleServer();`
 
 `SingleServerConfig` settings are listed below:
@@ -1221,7 +1221,7 @@ Password for Redis server authentication.
 
 Default value: `null`
 
-Username for Redis server authentication. Requires Redis 6.0+
+Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
@@ -1259,7 +1259,7 @@ Name of client connection
 
 Default value: `null`
 
-Defines array of allowed SSL protocols. +
+Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
@@ -1389,7 +1389,7 @@ RedissonClient redisson = Redisson.create(config);
 Documentation covering Redis server sentinel configuration is
 https://redis.io/topics/sentinel[here].
 
-Sentinel connection mode is activated by the following line: +
+Sentinel connection mode is activated by the following line: 
 `SentinelServersConfig sentinelConfig = config.useSentinelServers();`
 
 `SentinelServersConfig` settings listed below:
@@ -1428,18 +1428,18 @@ once could be added.
 
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: +
+Set node type used for read operations. Available values: 
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
-available, +
-* `MASTER` - Read from master node, +
+available, 
+* `MASTER` - Read from master node, 
 * `MASTER_SLAVE` - Read from master and slave nodes
 
 ==== subscriptionMode
 
 Default value: `SLAVE`
 
-Set node type used for subscription operations. Available values: +
-* `SLAVE` - Subscribe to slave nodes, +
+Set node type used for subscription operations. Available values: 
+* `SLAVE` - Subscribe to slave nodes, 
 * `MASTER` - Subscribe to master node,
 
 ==== loadBalancer
@@ -1447,10 +1447,10 @@ Set node type used for subscription operations. Available values: +
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
-implementations: +
-* `org.redisson.connection.balancer.CommandsLoadBalancer` +
-* `org.redisson.connection.balancer.WeightedRoundRobinBalancer` +
-* `org.redisson.connection.balancer.RoundRobinLoadBalancer` +
+implementations: 
+* `org.redisson.connection.balancer.CommandsLoadBalancer` 
+* `org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
+* `org.redisson.connection.balancer.RoundRobinLoadBalancer` 
 * `org.redisson.connection.balancer.RandomLoadBalancer`
 
 ==== subscriptionConnectionMinimumIdleSize
@@ -1551,10 +1551,10 @@ node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
 Available implementations: 
-+
+
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
-interval in milliseconds. Default is 180000 milliseconds. +
+interval in milliseconds. Default is 180000 milliseconds. 
 * `org.redisson.client.FailedCommandsDetector` - marks Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
@@ -1581,7 +1581,7 @@ Password for Redis servers authentication.
 
 Default value: `null`
 
-Username for Redis servers authentication. Requires Redis 6.0+
+Username for Redis servers authentication. Requires Redis 6.0
 
 ==== sentinelPassword
 
@@ -1595,7 +1595,7 @@ Sentinel password differs from master’s and slave’s.
 Default value: `null`
 
 Username for Redis Sentinel servers for authentication. Used only if
-Sentinel username differs from master’s and slave’s. Requires Redis 6.0+
+Sentinel username differs from master’s and slave’s. Requires Redis 6.0
 
 === credentialsResolver
 
@@ -1639,7 +1639,7 @@ Name of client connection
 
 Default value: `null`
 
-Defines array of allowed SSL protocols. +
+Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
@@ -1797,7 +1797,7 @@ RedissonClient redisson = Redisson.create(config);
 Documentation covering Redis server master/slave configuration is
 https://redis.io/topics/replication[here].
 
-Master slave connection mode is activated by the following line: +
+Master slave connection mode is activated by the following line: 
 `MasterSlaveServersConfig masterSlaveConfig = config.useMasterSlaveServers();`
 
 `MasterSlaveServersConfig` settings listed below:
@@ -1824,18 +1824,18 @@ once could be added. Use `rediss://` protocol for SSL connection.
 
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: +
+Set node type used for read operations. Available values: 
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
-available, +
-* `MASTER` - Read from master node, +
+available, 
+* `MASTER` - Read from master node, 
 * `MASTER_SLAVE` - Read from master and slave nodes
 
 ==== subscriptionMode
 
 Default value: `SLAVE`
 
-Set node type used for subscription operations. Available values: +
-* `SLAVE` - Subscribe to slave nodes, +
+Set node type used for subscription operations. Available values: 
+* `SLAVE` - Subscribe to slave nodes, 
 * `MASTER` - Subscribe to master node,
 
 ==== loadBalancer
@@ -1843,10 +1843,10 @@ Set node type used for subscription operations. Available values: +
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
-implementations: +
-* `org.redisson.connection.balancer.CommandsLoadBalancer` +
-* `org.redisson.connection.balancer.WeightedRoundRobinBalancer` +
-* `org.redisson.connection.balancer.RoundRobinLoadBalancer` +
+implementations: 
+* `org.redisson.connection.balancer.CommandsLoadBalancer` 
+* `org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
+* `org.redisson.connection.balancer.RoundRobinLoadBalancer` 
 * `org.redisson.connection.balancer.RandomLoadBalancer`
 
 ==== subscriptionConnectionMinimumIdleSize
@@ -1947,10 +1947,10 @@ node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
 Available implementations: 
-+
+
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
-interval in milliseconds. Default is 180000 milliseconds. +
+interval in milliseconds. Default is 180000 milliseconds. 
 * `org.redisson.client.FailedCommandsDetector` - marks Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
@@ -1977,7 +1977,7 @@ Password for Redis server authentication.
 
 Default value: `null`
 
-Username for Redis server authentication. Requires Redis 6.0+
+Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
@@ -2015,7 +2015,7 @@ Name of client connection
 
 Default value: `null`
 
-Defines array of allowed SSL protocols. +
+Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
@@ -2150,9 +2150,9 @@ Redis hostname might be resolved to more than one IP address.
 
 Depending on value of
 https://github.com/redisson/redisson/wiki/2.-Configuration#proxymode[proxyMode]
-setting there are two modes: +
+setting there are two modes: 
 1. all Redis nodes are primary and used for read/write operation with
-load balancer +
+load balancer 
 2. single primary for read/write operation and the rest are idle
 secondary nodes
 
@@ -2160,15 +2160,15 @@ Failed nodes detection is managed by
 https://github.com/redisson/redisson/wiki/2.-Configuration#scanmode[scanMode]
 setting.
 
-Compatible with: +
+Compatible with: 
 * https://aws.amazon.com/elasticache/features/#Serverless[AWS
-Elasticache Serverless] +
+Elasticache Serverless] 
 *
 https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-how-to-active-geo-replication[Azure
-Redis Cache active-active replication] +
+Redis Cache active-active replication] 
 *
 https://docs.redis.com/latest/rs/databases/configure/proxy-policy/#about-multiple-active-proxy-support[Redis
-Enterprise Multiple Active Proxy] +
+Enterprise Multiple Active Proxy] 
 *
 https://docs.redis.com/latest/rs/databases/active-active/get-started/[Redis
 Enterprise Active-Active databases]
@@ -2189,7 +2189,7 @@ RedissonClient redisson = Redisson.create(config);
 
 === 2.9.1. Proxy mode settings
 
-Proxy servers connection mode is activated by the following line: +
+Proxy servers connection mode is activated by the following line: 
 `ProxyServersConfig proxyConfig = config.useProxyServers();`
 
 `ProxyServersConfig` settings listed below:
@@ -2238,9 +2238,9 @@ Redis connection maximum pool size.
 
 Default value: `PING`
 
-Defines scan mode to detect failed Redis nodes. Available values: +
+Defines scan mode to detect failed Redis nodes. Available values: 
 * `PING` - Each Redis node is checked using PING command. If Redis node
-unable to response then it considered as a failed node. +
+unable to response then it considered as a failed node. 
 * `PUBSUB` - Messages are sent over pubsub channel per Redis node and
 should be received by all other Redis nodes. If Redis node unable to
 subscribe or receive message then it considered as a failed node.
@@ -2249,11 +2249,11 @@ subscribe or receive message then it considered as a failed node.
 
 Default value: `ALL_ACTIVE`
 
-Defines proxy mode. +
-Available values: +
+Defines proxy mode. 
+Available values: 
 * `FIRST_ACTIVE` - Primary (active) database is a first address in the
 list of addresses and the rest are idle secondary nodes used after
-failover. +
+failover. 
 * `ALL_ACTIVE` - All databases are primary (active) and used for
 read/write operations.
 
@@ -2335,10 +2335,10 @@ node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
 Available implementations: 
-+
+
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
-interval in milliseconds. Default is 180000 milliseconds. +
+interval in milliseconds. Default is 180000 milliseconds. 
 * `org.redisson.client.FailedCommandsDetector` - marks Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
@@ -2359,7 +2359,7 @@ Password for Redis server authentication.
 
 Default value: `null`
 
-Username for Redis server authentication. Requires Redis 6.0+
+Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
@@ -2397,7 +2397,7 @@ Name of client connection
 
 Default value: `null`
 
-Defines array of allowed SSL protocols. +
+Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
@@ -2475,10 +2475,10 @@ Enables TCP noDelay for connections.
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
-implementations: +
-`org.redisson.connection.balancer.CommandsLoadBalancer` +
-`org.redisson.connection.balancer.WeightedRoundRobinBalancer` +
-`org.redisson.connection.balancer.RoundRobinLoadBalancer` +
+implementations: 
+`org.redisson.connection.balancer.CommandsLoadBalancer` 
+`org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
+`org.redisson.connection.balancer.RoundRobinLoadBalancer` 
 `org.redisson.connection.balancer.RandomLoadBalancer`
 
 ==== nameMapper
@@ -2559,7 +2559,7 @@ RedissonClient redisson = Redisson.create(config);
 === 2.10.1. Multi Cluster settings
 
 Multi clusters connection mode is activated by the following line: 
-+
+
 `ClusterServersConfig clusterConfig = config.useMultiClusterServers();`
 
 `ClusterServersConfig` settings listed below:
@@ -2609,21 +2609,21 @@ Cache] structures.
 
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: +
+Set node type used for read operations. Available values: 
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
-available, +
-* `MASTER` - Read from master node, +
+available, 
+* `MASTER` - Read from master node, 
 * `MASTER_SLAVE` - Read from master and slave nodes
 
 ==== datastoreMode
 
 Default value: `ACTIVE_PASSIVE`
 
-Defines Datastore mode. +
-Available values: +
-* `ACTIVE` - only primary (active) cluster is used +
+Defines Datastore mode. 
+Available values: 
+* `ACTIVE` - only primary (active) cluster is used 
 * `ACTIVE_PASSIVE` - primary (active) cluster is used for read/write
-operations and secondary (passive) clusters are used for read operations only +
+operations and secondary (passive) clusters are used for read operations only 
 * `WRITE_ACTIVE_READ_PASSIVE` - Primary (active) cluster is used for
 write operations and secondary (passive) clusters are used for read
 operations only
@@ -2632,8 +2632,8 @@ operations only
 
 Default value: `SLAVE`
 
-Set node type used for subscription operations. Available values: +
-`SLAVE` - Subscribe to slave nodes, +
+Set node type used for subscription operations. Available values: 
+`SLAVE` - Subscribe to slave nodes, 
 `MASTER` - Subscribe to master node,
 
 ==== shardedSubscriptionMode
@@ -2641,7 +2641,7 @@ Set node type used for subscription operations. Available values: +
 Default value: `AUTO`
 
 Defines whether to use sharded subscription feature available in Redis
-7.0+. Used by `RMapCache`, `RLocalCachedMap`, `RCountDownLatch`,
+7.0. Used by `RMapCache`, `RLocalCachedMap`, `RCountDownLatch`,
 `RLock`, `RPermitExpirableSemaphore`, `RSemaphore`, `RLongAdder`,
 `RDoubleAdder`, `Micronaut Session`, `Apache Tomcat Manager` objects.
 
@@ -2652,11 +2652,11 @@ Default value: `NONE`
 Defines replication of the primary Redis Cluster with secondary Redis
 Clusters.
 
-Available values: +
+Available values: 
 `NONE` - No replication executed by Redisson. Replication should be
-executed on Redis side, +
+executed on Redis side, 
 `SYNC` - Each Redisson method invocation which modifies data is
-completed only if it has been replicated to all Redis setups, +
+completed only if it has been replicated to all Redis setups, 
 `ASYNC` - Each Redisson method invocation which modifies data doesn’t
 wait for replication to complete on other Redis setups
 
@@ -2665,10 +2665,10 @@ wait for replication to complete on other Redis setups
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
-implementations: +
-`org.redisson.connection.balancer.CommandsLoadBalancer` +
-`org.redisson.connection.balancer.WeightedRoundRobinBalancer` +
-`org.redisson.connection.balancer.RoundRobinLoadBalancer` +
+implementations: 
+`org.redisson.connection.balancer.CommandsLoadBalancer` 
+`org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
+`org.redisson.connection.balancer.RoundRobinLoadBalancer` 
 `org.redisson.connection.balancer.RandomLoadBalancer`
 
 ==== primaryDiscoveryMode
@@ -2677,7 +2677,7 @@ Default value: `AUTO`
 
 Defines primary Redis Cluster selection mode.
 
-Available values: +
+Available values: 
 * `FIRST_PRIMARY` - Primary database is the first address in the list of
 addresses * `AUTO` - Primary database is selected if all master nodes
 are available
@@ -2778,10 +2778,10 @@ node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
 Available implementations: 
-+
+
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
-interval in milliseconds. Default is 180000 milliseconds. +
+interval in milliseconds. Default is 180000 milliseconds. 
 * `org.redisson.client.FailedCommandsDetector` - marks Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
@@ -2802,7 +2802,7 @@ Password for Redis server authentication.
 
 Default value: `null`
 
-Username for Redis server authentication. Requires Redis 6.0+
+Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
@@ -2840,7 +2840,7 @@ Name of client connection.
 
 Default value: `null`
 
-Defines array of allowed SSL protocols. +
+Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
@@ -3009,7 +3009,7 @@ RedissonClient redisson = Redisson.create(config);
 Documentation covering Redis server sentinel configuration is
 https://redis.io/topics/sentinel[here].
 
-Multi Sentinel connection mode is activated by the following line: +
+Multi Sentinel connection mode is activated by the following line: 
 `MultiSentinelServersConfig sentinelConfig = config.useMultiSentinelServers();`
 
 `MultiSentinelServersConfig` settings listed below:
@@ -3021,11 +3021,11 @@ Default value: `NONE`
 Defines replication of primary Redis Sentinel setup with secondary Redis
 Sentinel setups.
 
-Available values: +
+Available values: 
 * `NONE` - No replication executed by Redisson. Replication should be
-executed on Redis side, +
+executed on Redis side, 
 * `SYNC` - Each Redisson method invocation which modifies data is
-completed only if it has been replicated to all Redis setups, +
+completed only if it has been replicated to all Redis setups, 
 * `ASYNC` - Each Redisson method invocation which modifies data doesn’t
 wait for replication to complete on other Redis setups
 
@@ -3063,18 +3063,18 @@ once could be added.
 
 Default value: `SLAVE`
 
-Set node type used for read operations. Available values: +
+Set node type used for read operations. Available values: 
 * `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are
-available, +
-* `MASTER` - Read from master node, +
+available, 
+* `MASTER` - Read from master node, 
 * `MASTER_SLAVE` - Read from master and slave nodes
 
 ==== subscriptionMode
 
 Default value: `SLAVE`
 
-Set node type used for subscription operations. Available values: +
-* `SLAVE` - Subscribe to slave nodes, +
+Set node type used for subscription operations. Available values: 
+* `SLAVE` - Subscribe to slave nodes, 
 * `MASTER` - Subscribe to master node,
 
 ==== loadBalancer
@@ -3082,10 +3082,10 @@ Set node type used for subscription operations. Available values: +
 Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
-implementations: +
-`org.redisson.connection.balancer.CommandsLoadBalancer` +
-`org.redisson.connection.balancer.WeightedRoundRobinBalancer` +
-`org.redisson.connection.balancer.RoundRobinLoadBalancer` +
+implementations: 
+`org.redisson.connection.balancer.CommandsLoadBalancer` 
+`org.redisson.connection.balancer.WeightedRoundRobinBalancer` 
+`org.redisson.connection.balancer.RoundRobinLoadBalancer` 
 `org.redisson.connection.balancer.RandomLoadBalancer`
 
 ==== subscriptionConnectionMinimumIdleSize
@@ -3185,10 +3185,10 @@ node detection logic via `org.redisson.client.FailedNodeDetector`
 interface.
 
 Available implementations: 
-+
+
 * `org.redisson.client.FailedConnectionDetector` - marks Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
-interval in milliseconds. Default is 180000 milliseconds. +
+interval in milliseconds. Default is 180000 milliseconds. 
 * `org.redisson.client.FailedCommandsDetector` - marks Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
@@ -3215,7 +3215,7 @@ Password for Redis servers authentication.
 
 Default value: `null`
 
-Username for Redis servers authentication. Requires Redis 6.0+
+Username for Redis servers authentication. Requires Redis 6.0
 
 ==== sentinelPassword
 
@@ -3227,7 +3227,7 @@ Password for Redis Sentinel servers authentication. Used only if Sentinel passwo
 
 Default value: `null`
 
-Username for Redis Sentinel servers for authentication. Used only if Sentinel username differs from master’s and slave’s. Requires Redis 6.0+
+Username for Redis Sentinel servers for authentication. Used only if Sentinel username differs from master’s and slave’s. Requires Redis 6.0
 
 === credentialsResolver
 
@@ -3268,7 +3268,7 @@ Name of client connection
 
 Default value: `null`
 
-Defines array of allowed SSL protocols. +
+Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
