@@ -223,7 +223,7 @@ Defines the slaves synchronization timeout in milliseconds, applied to each oper
 
 Default value: `600000`
 
-Reliable Topic watchdog timeout in milliseconds. Reliable Topic subscriber expires after `timeout` ifthe  watchdog didn’t extend it to the next `timeout` time interval. This prevents against infinite growing of stored messages in a topic, due to a Redisson client crush or any other reason when a subscriber can’t consume messages anymore.
+Reliable Topic watchdog timeout in milliseconds. Reliable Topic subscriber expires after `timeout` if the watchdog didn’t extend it to the next `timeout` time interval. This prevents against infinite growing of stored messages in a topic, due to a Redisson client crush or any other reason when a subscriber can’t consume messages anymore.
 
 === addressResolverGroupFactory
 
@@ -406,7 +406,7 @@ Default value: `SLAVE`
 
 Set node type used for read operations. Available values: 
 
-* `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES areavailable, 
+* `SLAVE` - Read from slave nodes, uses MASTER if no SLAVES are available, 
 * `MASTER` - Read from master node, 
 * `MASTER_SLAVE` - Read from master and slave nodes
 
