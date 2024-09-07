@@ -110,7 +110,7 @@ Output:
 {aes}MTfpT4T6psLCfSRHKT7Fx0j6r5wOX535G3NMnaphY=
 ....
 
-The secret key file is defined through `secretKey` setting in the Redisson configuration YAML file and applied to all encrypted passwords.
+The secret key file is defined through the `secretKey` setting in the Redisson configuration YAML file and applied to all encrypted passwords.
 
 Configuration YAML file example:
 
@@ -153,7 +153,7 @@ Defines whether Redisson connects to Redis only when the first Redis call is mad
 
 Default value: 32
 
-Defines the amount of threads shared between all internal Redis clients used by Redisson. Netty threads are used for Redis response decoding and command sending. `0` = `cores_amount * 2`
+Defines the number of threads shared between all internal Redis clients used by Redisson. Netty threads are used for Redis response decoding and command sending. `0` = `cores_amount * 2`
 
 === nettyHook
 
@@ -173,7 +173,7 @@ Use the external `ExecutorService,` which processes all listeners of `RTopic,` `
 
 === eventLoopGroup
 
-Use external EventLoopGroup. EventLoopGroup processes all Netty connections tied with Redis servers using their own threads. Each Redisson client creates own EventLoopGroup by default. So if there are multiple Redisson instances in the same JVM, it would be useful to share one EventLoopGroup among them.
+Use external EventLoopGroup. EventLoopGroup processes all Netty connections tied with Redis servers using its own threads. By default, each Redisson client creates its own EventLoopGroup. So, if there are multiple Redisson instances in the same JVM, it would be useful to share one EventLoopGroup among them.
 
 Only `io.netty.channel.epoll.EpollEventLoopGroup`, `io.netty.channel.kqueue.KQueueEventLoopGroup`, and `io.netty.channel.nio.NioEventLoopGroup` are allowed for usage.
 
@@ -187,25 +187,25 @@ Available values:
 * `TransportMode.EPOLL` - requires `netty-transport-native-epoll` lib in
 classpath 
 * `TransportMode.KQUEUE` - requires `netty-transport-native-kqueue` lib
-in classpath
+in the classpath
 
 === threads
 
 Default value: 16
 
-Threads are used to execute the listeners logic of `RTopic` object, invocation handlers of the `RRemoteService`, the `RTopic` object and `RExecutorService` tasks.
+Threads are used to execute the listener's logic of the `RTopic` object, invocation handlers of the `RRemoteService`, the `RTopic` object and `RExecutorService` tasks.
 
 === protocol
 
 Default value: RESP2
 
-Defines Redis protocol version. Available values: `RESP2`, `RESP3`
+Defines the Redis protocol version. Available values: `RESP2`, `RESP3`
 
 === lockWatchdogTimeout
 
 Default value: `30000`
 
-RLock object watchdog timeout in milliseconds. This parameter is only used if an RLock object is acquired without the `leaseTimeout` parameter. Lock expires after `lockWatchdogTimeout` if the watchdog didn’t extend it to the next `lockWatchdogTimeout` time interval. This prevents against infinity-locked locks due to a Redisson client crash, or any other reason why a lock can’t be released properly.
+RLock object watchdog timeout in milliseconds. This parameter is only used if an RLock object is acquired without the `leaseTimeout` parameter. The lock expires after `lockWatchdogTimeout` if the watchdog didn’t extend it to the next `lockWatchdogTimeout` time interval. This prevents infinity-locked locks due to a Redisson client crash, or any other reason why a lock can’t be released properly.
 
 === checkLockSyncedSlaves
 
@@ -223,7 +223,8 @@ Defines the slaves synchronization timeout in milliseconds, applied to each oper
 
 Default value: `600000`
 
-Reliable Topic watchdog timeout in milliseconds. Reliable Topic subscriber expires after `timeout` if the watchdog didn’t extend it to the next `timeout` time interval. This prevents against infinite growing of stored messages in a topic, due to a Redisson client crush or any other reason when a subscriber can’t consume messages anymore.
+Reliable Topic watchdog timeout in milliseconds. Reliable Topic subscriber expires after `timeout` if the watchdog didn’t extend it to the next `timeout` time interval. This prevents the ,winfinite growing of stored messages in a topic, due to a Redisson client crush or any other reason when a subscriber can’t consume messages anymore.
+
 
 === addressResolverGroupFactory
 
@@ -235,7 +236,7 @@ Allows for specifying a customized implementation of https://github.com/netty/ne
 Available implementations:
  
 * `org.redisson.connection.DnsAddressResolverGroupFactory` - uses the default DNS servers list provided by OS. 
-* `org.redisson.connection.SequentialDnsAddressResolverFactory` - uses the default DNS servers list provided by OS and allows to control concurrency level of requests to DNS servers. 
+* `org.redisson.connection.SequentialDnsAddressResolverFactory` - uses the default DNS servers list provided by OS and allows to control the concurrency level of requests to DNS servers. 
 * `org.redisson.connection.RoundRobinDnsAddressResolverGroupFactory` - uses the default DNS servers list provided by OS in round robin mode.
 
 === useScriptCache
@@ -249,16 +250,14 @@ Defines whether to use the Lua-script cache on the Redis side. Most Redisson met
 
 Default value: `true`
 
-Defines whether to keep PubSub messages handling in arrival order, or whether to handle
+Defines whether to keep PubSub messages handling in arrival order, or to handle
 messages concurrently. This setting is applied only for PubSub messages per channel.
 
 === minCleanUpDelay
 
 Default value: `5`
 
-Defines the minimum delay in seconds for the cleanup process of expired entries. Applied to `JCache`, `RSetCache`, `RClusteredSetCache`,
-`RMapCache`, `RListMultimapCache`, `RSetMultimapCache`,
-`RLocalCachedMapCache`, `RClusteredLocalCachedMapCache` objects.
+Defines the minimum delay in seconds for the cleanup process of expired entries. Applied to `JCache`, `RSetCache`, `RClusteredSetCache`, `RMapCache`, `RListMultimapCache`, `RSetMultimapCache`, `RLocalCachedMapCache`, `RClusteredLocalCachedMapCache` objects.
 
 === maxCleanUpDelay
 
@@ -303,7 +302,7 @@ edition._
 
 Default value: `true`
 
-Defines whether to supply Thread ContextClassLoader to Codec. Usage of Thread.getContextClassLoader() may resolve ClassNotFoundException error arise during Redis response decoding. This error might arise if Redisson is used in both Tomcat and deployed application.
+Defines whether to supply Thread ContextClassLoader to Codec. Usage of Thread.getContextClassLoader() may resolve ClassNotFoundException errors arising during Redis response decoding. This error might occurr if Redisson is used in both Tomcat and deployed application.
 
 === performanceMode
 
@@ -320,7 +319,7 @@ Available values:
 * `HIGHER_THROUGHPUT` - switches command processor engine to *higher
 throughput* mode 
 * `LOWER_LATENCY_AUTO` - switches command processor
-engine to *lower latency* mode and detect optimal settings automatically
+engine to *lower latency* mode and detects optimal settings automatically
 * `LOWER_LATENCY_MODE_3` - switches command processor engine to *lower
 latency* mode with predefined settings set #3 
 * `LOWER_LATENCY_MODE_2` - switches command processor engine to *lower latency* mode with
@@ -357,7 +356,8 @@ RedissonClient redisson = Redisson.create(config);
 === 2.4.1. Cluster settings
 
 Documentation covering Redis server cluster configuration is https://redis.io/topics/cluster-tutorial[here]. 
-Cluster connection mode is activated by the following line: 
+Cluster connection mode is activated by the following line:
+ 
 `ClusterServersConfig clusterConfig = config.useClusterServers();`
 
 `ClusterServersConfig` settings listed below:
@@ -383,7 +383,7 @@ Scan interval in milliseconds. Applied to Redis clusters topology scans.
 
 Default value: `231`
 
-Partitions amount used for data partitioning. Data partitioning supported by
+Partitions amount used for data partitioning. Data partitioning is supported by
 link:./7.-distributed-collections/#732-set-data-partitioning[Set],
 link:./7.-distributed-collections/#714-map-data-partitioning[Map],
 link:./6.-Distributed-objects/#641-bitset-data-partitioning[BitSet],
@@ -435,10 +435,7 @@ Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 Default value: `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
-Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`,
-`RCountDownLatch`, `RClusteredLocalCachedMap`,
-`RClusteredLocalCachedMapCache`, `RLocalCachedMap`,
-`RLocalCachedMapCache` objects and Hibernate Local Cached Region
+Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap` `RLocalCachedMapCache` objects and Hibernate Local Cached Region
 Factories.
 
 ==== subscriptionConnectionPoolSize
@@ -517,29 +514,29 @@ Time interval in milliseconds, after which another attempt to send a Redis comma
 
 Default value: `3000`
 
-Interval of Redis Slave reconnection attempts, when it was excluded from an internal list of available servers. On each timeout event Redisson tries to connect to the disconnected Redis server. Value in milliseconds.
+Interval of Redis Slave reconnection attempts, when it was excluded from an internal list of available servers. On each timeout event, Redisson tries to connect to the disconnected Redis server. Value in milliseconds.
 
 ==== failedSlaveNodeDetector
 
 Default value: `org.redisson.client.FailedConnectionDetector`
 
 Defines the failed Redis Slave node detector object which implements failed
-node detection logic via `org.redisson.client.FailedNodeDetector`
+node detection logic via the `org.redisson.client.FailedNodeDetector`
 interface.
 
 Available implementations: 
 
-* `org.redisson.client.FailedConnectionDetector` - marks Redis node as
-failed if it has ongoing connection errors in defined `checkInterval`
+* `org.redisson.client.FailedConnectionDetector` - marks the Redis node as
+failed if it has ongoing connection errors in the defined `checkInterval`
 interval (in milliseconds). Default is 180000 milliseconds. 
-* `org.redisson.client.FailedCommandsDetector` - marks Redis node as
+* `org.redisson.client.FailedCommandsDetector` - marks the Redis node as
 failed if it has certain amount of command execution errors defined by
-`failedCommandsLimit` in defined `checkInterval` interval (in
+`failedCommandsLimit` in the defined `checkInterval` interval (in
 milliseconds).
 
-* `org.redisson.client.FailedCommandsTimeoutDetector` - marks Redis node
+* `org.redisson.client.FailedCommandsTimeoutDetector` - marks the Redis node
 as failed if it has a certain amount of command execution timeout errors
-defined by `failedCommandsLimit` in defined `checkInterval` interval in
+defined by `failedCommandsLimit` in the defined `checkInterval` interval in
 milliseconds.
 
 ==== password
@@ -559,7 +556,7 @@ Username for Redis server authentication. Requires Redis 6.0
 Default value: empty
 
 Defines Credentials resolver, which is invoked during connection for Redis server authentication. Returns Credentials object per Redis node
-address, it contains `username` and `password` fields. Allows to specify
+address, it contains `username` and `password` fields. Allows you to specify
 dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
@@ -605,7 +602,7 @@ to be added to the classpath.
 
 Default value: `null`
 
-Defines the path to SSL truststore. It’s stores certificates which is used to identify server side of SSL connection. SSL truststore is read on each new connection creation and can be dynamically reloaded.
+Defines the path to the SSL truststore. It stores certificates which is used to identify the server side of an SSL connection. SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
@@ -623,7 +620,7 @@ Defines the SSL keystore type.
 
 Default value: `null`
 
-Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
+Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
@@ -790,7 +787,7 @@ Replicated connection mode is activated by the following line:
 
 Add Redis node address in `host:port` format. Multiple nodes can be
 added at once. All nodes (master and slaves) should be defined. For
-Aiven Redis hosting a single hostname is enough. Use the `rediss://` protocol for SSL connections.
+Aiven Redis hosting, a single hostname is enough. Use the `rediss://` protocol for SSL connections.
 
 ==== scanInterval
 
@@ -865,9 +862,8 @@ Redis `master' node maximum connection pool size
 
 Default value: `10000`
 
-If pooled connection not used for a timeout time and current connections
-amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. 
+If a pooled connection is not used for a timeout time and current connections
+amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== readMode
 
@@ -933,17 +929,16 @@ interface.
 
 Available implementations: 
 
-* `org.redisson.client.FailedConnectionDetector` - marks Redis node as
+* `org.redisson.client.FailedConnectionDetector` - marks the Redis node as
 failed if it has ongoing connection errors in the defined `checkInterval.`
 interval in milliseconds. The default is 180000 milliseconds. 
-* `org.redisson.client.FailedCommandsDetector` - marks Redis node as
-failed if it has a certain amount of command execution errors defined by
-`failedCommandsLimit` in the defined `checkInterval` interval in
+* `org.redisson.client.FailedCommandsDetector` - marks the Redis node as
+failed if it has a certain amount of command execution errors defined by the `failedCommandsLimit` in the defined `checkInterval` interval in
 milliseconds.
 
-* `org.redisson.client.FailedCommandsTimeoutDetector` - marks Redis node
+* `org.redisson.client.FailedCommandsTimeoutDetector` - marks the Redis node
 as failed if it has a certain amount of command execution timeout errors
-defined by `failedCommandsLimit` in the defined `checkInterval` interval in
+defined by the `failedCommandsLimit` in the defined `checkInterval` interval in
 milliseconds.
 
 ==== database
@@ -969,7 +964,7 @@ Default value: empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
-address, it contains `username` and `password` fields. Allows to specify
+address, it contains `username` and `password` fields. Allows you to specify
 dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
@@ -977,9 +972,7 @@ dynamically changing Redis credentials.
 Default value: `5`
 
 Subscriptions per subscribing connection limit. Used by `RTopic`,
-`RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
-`RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`,
-`RLocalCachedMap`, `RLocalCachedMapCache` objects, and Hibernate Local Cached Region Factories.
+`RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap`, `RLocalCachedMapCache` objects, and Hibernate Local Cached Region Factories.
 
 ==== clientName
 
@@ -1006,13 +999,13 @@ man-in-the-middle attacks.
 Default value: `JDK`
 
 Defines the SSL provider (JDK or OPENSSL) used to handle SSL connections.
-OPENSSL considered as faster implementation and requires https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-tcnative-boringssl-static] to be added in the classpath.
+OPENSSL considered as a faster implementation and requires https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-tcnative-boringssl-static] to be added in the classpath.
 
 ==== sslTruststore
 
 Default value: `null`
 
-Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
+Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
@@ -1030,7 +1023,7 @@ Defines SSL keystore type.
 
 Default value: `null`
 
-Defines path to the SSL keystore. It stores private key and certificates corresponding to their public keys. Used if server side of SSL connection requires client authentication. SSL keystore is read on each new connection creation and can be dynamically reloaded.
+Defines path to the SSL keystore. It stores private key and certificates corresponding to their public keys. Used if the server side of an SSL connection requires client authentication. SSL keystore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
@@ -1144,11 +1137,7 @@ SSL connection.
 Default value: `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
-Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`,
-`RCountDownLatch`, `RClusteredLocalCachedMap`,
-`RClusteredLocalCachedMapCache`, `RLocalCachedMap`,
-`RLocalCachedMapCache` objects and Hibernate Local Cached Region
-Factories.
+Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap` `RLocalCachedMapCache` objects and Hibernate Local Cached Region Factories.
 
 ==== subscriptionConnectionPoolSize
 
@@ -1184,9 +1173,8 @@ IP bindings for a single hostname are supported in https://github.com/redisson/r
 
 Default value: `10000`
 
-If pooled connection not used for a timeout time and current connections
-amount bigger than minimum idle connection pool size, then it will
-closed and removed from pool. Value in milliseconds. 
+If a pooled connection is not used for a timeout time and current connections
+amount bigger than minimum idle connection pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
 
@@ -1205,7 +1193,7 @@ Redis server response timeout. It starts to count down once a Redis command is s
 Default value: `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
-after *retryAttempts*. But if it is sent successfully, then *timeout* will be
+after the defined *retryAttempts*. But if it is sent successfully, then *timeout* will be
 started.
 
 ==== retryInterval
@@ -1239,7 +1227,7 @@ Default value: empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
-address, it contains `username` and `password` fields. Allows to specify
+address, it contains `username` and `password` fields. Allows you to specify
 dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
@@ -1247,10 +1235,7 @@ dynamically changing Redis credentials.
 Default value: `5`
 
 Subscriptions per subscriber connection limit. Used by `RTopic`,
-`RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
-`RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`,
-`RLocalCachedMap`, `RLocalCachedMapCache` objects and Hibernate Local
-Cached Region Factories.
+`RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap`, `RLocalCachedMapCache` objects and Hibernate Local Cached Region Factories.
 
 ==== subscriptionTimeout
 
@@ -1290,7 +1275,7 @@ https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-t
 
 Default value: `null`
 
-Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
+Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
@@ -1308,7 +1293,7 @@ Defines SSL keystore type.
 
 Default value: `null`
 
-Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
+Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
@@ -1351,7 +1336,7 @@ Applied to all Redis commands.
 
 === 2.6.2. Single instance YAML config format
 
-Below is single instance configuration example in YAML format. All property names are matched with `SingleServerConfig` and `Config` object property names.
+Below is a/single instance configuration example in YAML format. All property names are matched with `SingleServerConfig` and `Config` object property names.
 
 [source,yaml]
 ----
@@ -1514,9 +1499,8 @@ Redis `master' node maximum connection pool size
 
 Default value: `10000`
 
-If pooled connection not used for a timeout time and current connections
-amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. 
+If a pooled connection is not used for a timeout time and current connections
+amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
 
@@ -1564,15 +1548,15 @@ interface.
 
 Available implementations: 
 
-* `org.redisson.client.FailedConnectionDetector` - marks Redis node as
+* `org.redisson.client.FailedConnectionDetector` - marks the Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. 
-* `org.redisson.client.FailedCommandsDetector` - marks Redis node as
+* `org.redisson.client.FailedCommandsDetector` - marks the Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
 
-* `org.redisson.client.FailedCommandsTimeoutDetector` - marks Redis node
+* `org.redisson.client.FailedCommandsTimeoutDetector` - marks the Redis node
 as failed if it has certain amount of command execution timeout errors
 defined by `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
@@ -1615,7 +1599,7 @@ Default value: empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
-address, it contains `username` and `password` fields. Allows to specify
+address, it contains `username` and `password` fields. Allows you to specify
 dynamically changing Redis credentials.
 
 ==== sentinelsDiscovery
@@ -1666,16 +1650,16 @@ man-in-the-middle attacks.
 Default value: `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
-OPENSSL considered as faster implementation and requires
+OPENSSL is considered as a faster implementation and requires
 https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-tcnative-boringssl-static]
-to be added in classpath.
+to be added in the classpath.
 
 ==== sslTruststore
 
 Default value: `null`
 
-Defines path to SSL truststore. It’s stores certificates which is used
-to identify server side of SSL connection. SSL truststore is read on
+Defines path to the SSL truststore. It stores certificates which is used
+to identify the server side of an SSL connection. SSL truststore is read on
 each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
@@ -1694,8 +1678,8 @@ Defines SSL keystore type.
 
 Default value: `null`
 
-Defines path to SSL keystore. It’s stores private key and certificates
-corresponding to their public keys. Used if server side of SSL
+Defines path to the SSL keystore. It stores private key and certificates
+corresponding to their public keys. Used if the server side of an SSL
 connection requires client authentication. SSL keystore is read on each
 new connection creation and can be dynamically reloaded.
 
@@ -1750,7 +1734,7 @@ Applied to all Redis commands.
 
 === 2.7.2. Sentinel YAML config format
 
-Below is sentinel configuration example in YAML format. All property
+Below is a sentinel configuration example in YAML format. All property
 names are matched with `SentinelServersConfig` and `Config` object property
 names.
 
@@ -1913,9 +1897,8 @@ Redis `master' node maximum connection pool size
 
 Default value: `10000`
 
-If pooled connection not used for a timeout time and current connections
-amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. 
+If a pooled connection is not used for a timeout time and current connections
+amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
 
@@ -1963,15 +1946,15 @@ interface.
 
 Available implementations: 
 
-* `org.redisson.client.FailedConnectionDetector` - marks Redis node as
+* `org.redisson.client.FailedConnectionDetector` - marks the Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. 
-* `org.redisson.client.FailedCommandsDetector` - marks Redis node as
+* `org.redisson.client.FailedCommandsDetector` - marks the Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
 
-* `org.redisson.client.FailedCommandsTimeoutDetector` - marks Redis node
+* `org.redisson.client.FailedCommandsTimeoutDetector` - marks the Redis node
 as failed if it has certain amount of command execution timeout errors
 defined by `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
@@ -2000,7 +1983,7 @@ Default value: empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
-address, it contains `username` and `password` fields. Allows to specify
+address, it contains `username` and `password` fields. Allows you to specify
 dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
@@ -2045,7 +2028,7 @@ man-in-the-middle attacks.
 Default value: `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
-OPENSSL considered as faster implementation and requires
+OPENSSL considered as a faster implementation and requires
 https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-tcnative-boringssl-static]
 to be added in the classpath.
 
@@ -2053,8 +2036,8 @@ to be added in the classpath.
 
 Default value: `null`
 
-Defines path to SSL truststore. It’s stores certificates which is used
-to identify server side of SSL connection. SSL truststore is read on
+Defines path to the SSL truststore. It stores certificates which is used
+to identify the server side of an SSL connection. SSL truststore is read on
 each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
@@ -2073,8 +2056,8 @@ Defines SSL keystore type.
 
 Default value: `null`
 
-Defines path to SSL keystore. It’s stores private key and certificates
-corresponding to their public keys. Used if server side of SSL
+Defines path to the SSL keystore. It stores private key and certificates
+corresponding to their public keys. Used if the server side of an SSL
 connection requires client authentication. SSL keystore is read on each
 new connection creation and can be dynamically reloaded.
 
@@ -2298,9 +2281,8 @@ cache TTL is low enough to support this. Set `-1` to disable.
 
 Default value: `10000`
 
-If pooled connection not used for a timeout time and current connections
-amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. 
+If a pooled connection is not used for a timeout time and current connections
+amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
 
@@ -2354,15 +2336,15 @@ interface.
 
 Available implementations: 
 
-* `org.redisson.client.FailedConnectionDetector` - marks Redis node as
+* `org.redisson.client.FailedConnectionDetector` - marks the Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. 
-* `org.redisson.client.FailedCommandsDetector` - marks Redis node as
+* `org.redisson.client.FailedCommandsDetector` - marks the Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
 
-* `org.redisson.client.FailedCommandsTimeoutDetector` - marks Redis node
+* `org.redisson.client.FailedCommandsTimeoutDetector` - marks the Redis node
 as failed if it has certain amount of command execution timeout errors
 defined by `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
@@ -2385,7 +2367,7 @@ Default value: empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
-address, it contains `username` and `password` fields. Allows to specify
+address, it contains `username` and `password` fields. Allows you to specify
 dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
@@ -2430,16 +2412,16 @@ man-in-the-middle attacks.
 Default value: `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
-OPENSSL considered as faster implementation and requires
+OPENSSL considered as a faster implementation and requires
 https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-tcnative-boringssl-static]
-to be added in classpath.
+to be added in the classpath.
 
 ==== sslTruststore
 
 Default value: `null`
 
-Defines path to SSL truststore. It’s stores certificates which is used
-to identify server side of SSL connection. SSL truststore is read on
+Defines path to the SSL truststore. It stores certificates which is used
+to identify the server side of an SSL connection. SSL truststore is read on
 each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
@@ -2458,8 +2440,8 @@ Defines SSL keystore type.
 
 Default value: `null`
 
-Defines path to SSL keystore. It’s stores private key and certificates
-corresponding to their public keys. Used if server side of SSL
+Defines path to the SSL keystore. It stores private key and certificates
+corresponding to their public keys. Used if the server side of an SSL
 connection requires client authentication. SSL keystore is read on each
 new connection creation and can be dynamically reloaded.
 
@@ -2753,9 +2735,8 @@ Redis `master' node maximum connection pool size
 
 Default value: `10000`
 
-If pooled connection not used for a timeout time and current connections
-amount bigger than minimum idle connections pool size, then it will
-closed and removed from pool. Value in milliseconds. 
+If a pooled connection is not used for a timeout time and current connections
+amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout Default value: `10000`
 
@@ -2801,15 +2782,15 @@ interface.
 
 Available implementations: 
 
-* `org.redisson.client.FailedConnectionDetector` - marks Redis node as
+* `org.redisson.client.FailedConnectionDetector` - marks the Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. 
-* `org.redisson.client.FailedCommandsDetector` - marks Redis node as
+* `org.redisson.client.FailedCommandsDetector` - marks the Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
 
-* `org.redisson.client.FailedCommandsTimeoutDetector` - marks Redis node
+* `org.redisson.client.FailedCommandsTimeoutDetector` - marks the Redis node
 as failed if it has certain amount of command execution timeout errors
 defined by `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
@@ -2832,7 +2813,7 @@ Default value: empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
-address, it contains `username` and `password` fields. Allows to specify
+address, it contains `username` and `password` fields. Allows you to specify
 dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
@@ -2883,7 +2864,7 @@ OPENSSL is considered the faster implementation and requires https://repo1.maven
 
 Default value: `null`
 
-Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
+Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 ==== sslTruststorePassword
 
 Default value: `null`
@@ -2900,7 +2881,7 @@ Defines SSL keystore type.
 
 Default value: `null`
 
-Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
+Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
@@ -3160,7 +3141,7 @@ Redis `master' node maximum connection pool size
 
 Default value: `10000`
 
-If pooled connection not used for a timeout time and current connections
+If a pooled connection is not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
@@ -3209,15 +3190,15 @@ interface.
 
 Available implementations: 
 
-* `org.redisson.client.FailedConnectionDetector` - marks Redis node as
+* `org.redisson.client.FailedConnectionDetector` - marks the Redis node as
 failed if it has ongoing connection errors in defined `checkInterval`
 interval in milliseconds. Default is 180000 milliseconds. 
-* `org.redisson.client.FailedCommandsDetector` - marks Redis node as
+* `org.redisson.client.FailedCommandsDetector` - marks the Redis node as
 failed if it has certain amount of command execution errors defined by
 `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
 
-* `org.redisson.client.FailedCommandsTimeoutDetector` - marks Redis node
+* `org.redisson.client.FailedCommandsTimeoutDetector` - marks the Redis node
 as failed if it has certain amount of command execution timeout errors
 defined by `failedCommandsLimit` in defined `checkInterval` interval in
 milliseconds.
@@ -3256,7 +3237,7 @@ Username for Redis Sentinel servers for authentication. Used only if Sentinel us
 
 Default value: empty
 
-Defines Credentials resolver, which is invoked during connection for Redis server authentication. Returns Credentials object per Redis node address, it contains `username` and `password` fields. Allows to specify dynamically changing Redis credentials.
+Defines Credentials resolver, which is invoked during connection for Redis server authentication. Returns Credentials object per Redis node address, it contains `username` and `password` fields. Allows you to specify dynamically changing Redis credentials.
 
 ==== sentinelsDiscovery
 
@@ -3269,10 +3250,7 @@ Enables sentinels discovery
 Default value: `5`
 
 Subscriptions per subscriber connection limit. Used by `RTopic`,
-`RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
-`RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`,
-`RLocalCachedMap`, `RLocalCachedMapCache` objects and Hibernate Local
-Cached Region Factories.
+`RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap`, `RLocalCachedMapCache` objects and Hibernate Local Cached Region Factories.
 
 ==== subscriptionTimeout
 
@@ -3306,15 +3284,15 @@ man-in-the-middle attacks.
 Default value: `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
-OPENSSL considered as faster implementation and requires
+OPENSSL considered as a faster implementation and requires
 https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-tcnative-boringssl-static]
-to be added in classpath.
+to be added in the classpath.
 
 ==== sslTruststore
 
 Default value: `null`
 
-Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
+Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
@@ -3332,7 +3310,7 @@ Defines SSL keystore type.
 
 Default value: `null`
 
-Defines the path to the SSL keystore. It stores certificates which are used to identify the server side of SSL connections. The SSL keystore is read on each new connection creation and can be dynamically reloaded.
+efines the path to the SSL keystore. It stores certificates which are used to identify the server side of an SSL connections. The SSL keystore is read on each new connection creation and can be dynamically reloaded.
 
 
 ==== sslKeystorePassword
@@ -3386,7 +3364,7 @@ Applied to all Redis commands.
 
 === 2.11.2. Multi Sentinel YAML config format
 
-Below is sentinel configuration example in YAML format. All property
+Below is a sentinel configuration example in YAML format. All property
 names are matched with `MultiSentinelServersConfig` and `Config` object
 property names.
 
