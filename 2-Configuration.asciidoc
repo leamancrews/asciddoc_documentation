@@ -86,7 +86,7 @@ singleServerConfig:
 
 === 2.2.3 Password encryption
 
-_This feature is available only in the https://redisson.pro[Redisson PRO] edition._
+_This feature is available only in https://redisson.pro[Redisson PRO] edition._
 
 Redisson supports Advanced Encryption Standard (AES) encryption for passwords defined in the configuration file, with the secret key stored in the file.
 
@@ -130,19 +130,25 @@ The following settings belong to the `org.redisson.Config` object and are common
 
 === codec
 
-Default value: `org.redisson.codec.Kryo5Codec`
+Default value:
+
+ `org.redisson.codec.Kryo5Codec`
 
 Redis data codec. Used during read and write of Redis data. Several implementations are link:../wiki/4.-data-serialization[available].
 
 === connectionListener
 
-Default value: `null`
+Default value:
+
+ `null`
 
 The connection listener, which is triggered when Redisson is connected/disconnected to a Redis server.
 
 === lazyInitialization
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Defines whether Redisson connects to Redis only when the first Redis call is made or if Redisson connects during creation of the Redisson instance.
 
@@ -151,19 +157,25 @@ Defines whether Redisson connects to Redis only when the first Redis call is mad
 
 === nettyThreads
 
-Default value: 32
+Default value:
+
+ 32
 
 Defines the number of threads shared between all internal Redis clients used by Redisson. Netty threads are used for Redis response decoding and command sending. `0` = `cores_amount * 2`
 
 === nettyHook
 
-Default value: empty object
+Default value:
+
+ empty object
 
 Netty hook applied to Netty Bootstrap and Channel objects.
 
 === nettyExecutor
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Use the external `ExecutorService,' which is used by Netty for Redis response decoding and command sending.
 
@@ -179,56 +191,71 @@ Only `io.netty.channel.epoll.EpollEventLoopGroup`, `io.netty.channel.kqueue.KQue
 
 === transportMode
 
-Default value: `TransportMode.NIO`
+Default value:
+
+ `TransportMode.NIO`
 
 Available values:
  
 * `TransportMode.NIO` 
-* `TransportMode.EPOLL` - requires `netty-transport-native-epoll` lib in
-classpath 
+* `TransportMode.EPOLL` - requires `netty-transport-native-epoll` lib in the classpath 
 * `TransportMode.KQUEUE` - requires `netty-transport-native-kqueue` lib
 in the classpath
 
 === threads
 
-Default value: 16
+Default value:
+
+ 16
 
 Threads are used to execute the listener's logic of the `RTopic` object, invocation handlers of the `RRemoteService`, the `RTopic` object and `RExecutorService` tasks.
 
 === protocol
 
-Default value: RESP2
+Default value:
+
+ RESP2
 
 Defines the Redis protocol version. Available values: `RESP2`, `RESP3`
 
 === lockWatchdogTimeout
 
-Default value: `30000`
+Default value:
+
+ `30000`
 
 RLock object watchdog timeout in milliseconds. This parameter is only used if an RLock object is acquired without the `leaseTimeout` parameter. The lock expires after `lockWatchdogTimeout` if the watchdog didn’t extend it to the next `lockWatchdogTimeout` time interval. This prevents infinity-locked locks due to a Redisson client crash, or any other reason why a lock can’t be released properly.
 
 === checkLockSyncedSlaves
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Defines whether to check the synchronized slaves amount with the actual slaves amount after lock acquisition.
 
 === slavesSyncTimeout
 
-Default value: `1000`
+Default value:
+
+ `1000`
 
 Defines the slaves synchronization timeout in milliseconds, applied to each operation of the RLock, RSemaphore, RPermitExpirableSemaphore objects.
 
 === reliableTopicWatchdogTimeout
 
-Default value: `600000`
+Default value:
 
-Reliable Topic watchdog timeout in milliseconds. Reliable Topic subscriber expires after `timeout` if the watchdog didn’t extend it to the next `timeout` time interval. This prevents the ,winfinite growing of stored messages in a topic, due to a Redisson client crush or any other reason when a subscriber can’t consume messages anymore.
+ `600000`
+
+Reliable Topic watchdog timeout in milliseconds. Reliable Topic subscriber expires after `timeout` if the watchdog didn’t extend it to the next `timeout` time interval. This prevents the infinite growing of stored messages in a topic, due to a Redisson client crush or any other reason when a subscriber can’t consume messages anymore.
 
 
 === addressResolverGroupFactory
 
 Default value:
+
+
 `org.redisson.connection.SequentialDnsAddressResolverFactory`
 
 Allows for specifying a customized implementation of https://github.com/netty/netty/blob/4.1/resolver-dns/src/main/java/io/netty/resolver/dns/DnsAddressResolverGroup.java[DnsAddressResolverGroup].
@@ -241,41 +268,53 @@ Available implementations:
 
 === useScriptCache
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Defines whether to use the Lua-script cache on the Redis side. Most Redisson methods are Lua-script-based, and turning this setting on could increase the speed of such methods' execution and save network traffic.
 
 
 === keepPubSubOrder
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Defines whether to keep PubSub messages handling in arrival order, or to handle
 messages concurrently. This setting is applied only for PubSub messages per channel.
 
 === minCleanUpDelay
 
-Default value: `5`
+Default value:
+
+ `5`
 
 Defines the minimum delay in seconds for the cleanup process of expired entries. Applied to `JCache`, `RSetCache`, `RClusteredSetCache`, `RMapCache`, `RListMultimapCache`, `RSetMultimapCache`, `RLocalCachedMapCache`, `RClusteredLocalCachedMapCache` objects.
 
 === maxCleanUpDelay
 
-Default value: `1800`
+Default value:
+
+ `1800`
 
 Defines maximum delay in seconds for clean up process of expired entries. Applied to `JCache`, `RSetCache`, `RClusteredSetCache`, `RMapCache`, `RListMultimapCache`, `RSetMultimapCache`,
 `RLocalCachedMapCache`, `RClusteredLocalCachedMapCache` objects.
 
 === cleanUpKeysAmount
 
-Default value: `100`
+Default value:
+
+ `100`
 
 Defines the amount of expired keys deleted per single operation during the cleanup process of expired entries. Applied to `JCache`, `RSetCache`, `RClusteredSetCache`, `RMapCache`, `RListMultimapCache`, `RSetMultimapCache`, `RLocalCachedMapCache`,
 `RClusteredLocalCachedMapCache` objects.
 
 === meterMode
 
-Default value: `ALL`
+Default value:
+
+ `ALL`
 
 Defines the Micrometer statistics collection mode.
 
@@ -289,7 +328,9 @@ Available values:
 
 === meterRegistryProvider
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the Micrometer registry provider used to collect various statistics
 for Redisson objects. Please refer to the https://github.com/redisson/redisson/wiki/14.-Integration-with-frameworks#1410-statistics-monitoring-jmx-and-other-systems[statistics
@@ -300,13 +341,17 @@ edition._
 
 === useThreadClassLoader
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Defines whether to supply Thread ContextClassLoader to Codec. Usage of Thread.getContextClassLoader() may resolve ClassNotFoundException errors arising during Redis response decoding. This error might occurr if Redisson is used in both Tomcat and deployed application.
 
 === performanceMode
 
-Default value: `LOWER_LATENCY_MODE_2`
+Default value:
+
+ `LOWER_LATENCY_MODE_2`
 
 Defines the command processing engine performance mode. Since all values are
 application-specific (except for the `NORMAL` value) it’s recommended to try all of them.
@@ -364,7 +409,9 @@ Cluster connection mode is activated by the following line:
 
 ==== checkSlotsCoverage
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables cluster slots check during Redisson startup.
 
@@ -375,13 +422,17 @@ Redisson automatically discovers the cluster topology. Use the `rediss://` proto
 
 ==== scanInterval
 
-Default value: `1000`
+Default value:
+
+ `1000`
 
 Scan interval in milliseconds. Applied to Redis clusters topology scans.
 
 ==== slots
 
-Default value: `231`
+Default value:
+
+ `231`
 
 Partitions amount used for data partitioning. Data partitioning is supported by
 link:./7.-distributed-collections/#732-set-data-partitioning[Set],
@@ -402,7 +453,9 @@ edition._
 
 ==== readMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for read operations. Available values: 
 
@@ -412,7 +465,9 @@ Set node type used for read operations. Available values:
 
 ==== subscriptionMode
 
-Default value: `MASTER`
+Default value:
+
+ `MASTER`
 
 Set node type used for subscription operations. Available values: 
 
@@ -421,7 +476,9 @@ Set node type used for subscription operations. Available values:
 
 ==== loadBalancer
 
-Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
+Default value:
+
+ `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available implementations: 
 
@@ -432,7 +489,9 @@ Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 ==== subscriptionConnectionMinimumIdleSize
 
-Default value: `1`
+Default value:
+
+ `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
 Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap` `RLocalCachedMapCache` objects and Hibernate Local Cached Region
@@ -440,7 +499,9 @@ Factories.
 
 ==== subscriptionConnectionPoolSize
 
-Default value: `50`
+Default value:
+
+ `50`
 
 Maximum connection pool size for subscription (pub/sub) channels. Used
 by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -450,7 +511,9 @@ Cached Region Factories.
 
 ==== shardedSubscriptionMode
 
-Default value: `AUTO`
+Default value:
+
+ `AUTO`
 
 Defines whether to use the sharded subscription feature available in Redis
 7.0. Used by `RMapCache`, `RLocalCachedMap`, `RCountDownLatch`,
@@ -459,46 +522,66 @@ Defines whether to use the sharded subscription feature available in Redis
 
 ==== slaveConnectionMinimumIdleSize
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Redis `slave' node minimum idle connection amount for each slave node.
 
 ==== slaveConnectionPoolSize
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `slave' node maximum connection pool size for each slave node
 
 ==== masterConnectionMinimumIdleSize 
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Minimum idle connections amount per Redis master node.
 
 ==== masterConnectionPoolSize
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Redis `master' node maximum connection pool size 
 
 ==== idleConnectionTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 If a pooled connection is not used for a timeout time and the current connections
 amount is bigger than the minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
-==== connectTimeout Default value: `10000`
+==== connectTimeout 
+
+Default value:
+
+ `10000`
 
 Timeout in milliseconds during connecting to any Redis server. 
 
-==== timeout Default value: `3000`
+==== timeout 
+
+Default value:
+
+ `3000`
 
 Redis server response timeout in milliseconds. Starts countdown after a Redis command is successfully sent. 
 
 ==== retryAttempts 
 
-Default value: `3`
+Default value:
+
+ `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -506,19 +589,25 @@ started.
 
 ==== retryInterval
 
-Default value: `1500`
+Default value:
+
+ `1500`
 
 Time interval in milliseconds, after which another attempt to send a Redis command will be executed.
 
 ==== failedSlaveReconnectionInterval
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Interval of Redis Slave reconnection attempts, when it was excluded from an internal list of available servers. On each timeout event, Redisson tries to connect to the disconnected Redis server. Value in milliseconds.
 
 ==== failedSlaveNodeDetector
 
-Default value: `org.redisson.client.FailedConnectionDetector`
+Default value:
+
+ `org.redisson.client.FailedConnectionDetector`
 
 Defines the failed Redis Slave node detector object which implements failed
 node detection logic via the `org.redisson.client.FailedNodeDetector`
@@ -541,19 +630,25 @@ milliseconds.
 
 ==== password
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis server authentication.
 
 ==== username
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
-Default value: empty
+Default value:
+
+ empty
 
 Defines Credentials resolver, which is invoked during connection for Redis server authentication. Returns Credentials object per Redis node
 address, it contains `username` and `password` fields. Allows you to specify
@@ -561,7 +656,9 @@ dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
 
-Default value: `5`
+Default value:
+
+ `5`
 
 Subscriptions per subscriber connection limit. Used by `RTopic`,
 `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -571,27 +668,35 @@ Cached Region Factories.
 
 ==== clientName 
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Name of client connection.
 
 ==== sslProtocols
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines an array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables SSL endpoint identification during handshaking, which prevents
 man-in-the-middle attacks.
 
 ==== sslProvider
 
-Default value: `JDK`
+Default value:
+
+ `JDK`
 
 Defines the SSL provider (JDK or OPENSSL) used to handle SSL connections.
 OPENSSL is considered as a faster implementation and requires
@@ -600,37 +705,49 @@ to be added to the classpath.
 
 ==== sslTruststore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the path to the SSL truststore. It stores certificates which is used to identify the server side of an SSL connection. SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL truststore
 
 ==== sslKeystoreType
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the SSL keystore type.
 
 ==== sslKeystore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for the SSL keystore
 
 ==== pingConnectionInterval
 
-Default value: `30000`
+Default value:
+
+ `30000`
 
 This setting allows for detecting and reconnecting broken connections, using the
 PING command. PING command send interval is defined in milliseconds.
@@ -638,52 +755,68 @@ Useful in cases when the netty lib doesn’t invoke `channelInactive` method for
 
 ==== keepAlive
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Enables TCP keepAlive for connections.
 
 ==== tcpKeepAliveCount
 
-Default value: 0
+Default value:
+
+ 0
 
 This defines the maximum number of keepalive probes TCP should send before dropping the connection. A 0 value means to use the system's default setting.
 
 ==== tcpKeepAliveIdle
 
-Default value: 0
+Default value:
+
+ 0
 
 Defines the time in seconds the connection needs to remain idle before
 TCP starts sending keepalive probes. A 0 value means use the system's default setting.
 
 ==== tcpKeepAliveInterval
 
-Default value: 0
+Default value:
+
+ 0
 
 Defines the time in seconds between individual keepalive probes. 0 value
 means use the system's default setting.
 
 ==== tcpUserTimeout
 
-Default value: 0
+Default value:
+
+ 0
 
 Defines the maximum amount of time in milliseconds that transmitted data may remain unacknowledged or buffered data may remain untransmitted (due to zero window size) before TCP will forcibly close the connection. A 0 value means use the system's default setting.
 
 ==== tcpNoDelay
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables TCP noDelay for connections.
 
 ==== subscriptionTimeout
 
-Default value: 7500
+Default value:
+
+ 7500
 
 Defines subscription timeout in milliseconds applied per channel
 subscription.
 
 ==== natMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines NAT mapper interface, which maps Redis URI objects and applies to all Redis connections. It can be used to map internal Redis server IPs to external ones. Available implementations:
 `org.redisson.api.HostPortNatMapper` and
@@ -691,14 +824,18 @@ Defines NAT mapper interface, which maps Redis URI objects and applies to all Re
 
 ==== nameMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Name mapper which maps Redisson object name to a custom name.
 Applied to all Redisson objects.
 
 ==== commandMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Command mapper, which maps Redis command name to a custom name.
 Applied to all Redis commands.
@@ -791,13 +928,17 @@ Aiven Redis hosting, a single hostname is enough. Use the `rediss://` protocol f
 
 ==== scanInterval
 
-Default value: `1000`
+Default value:
+
+ `1000`
 
 Replicated nodes scan interval in milliseconds.
 
 ==== loadBalancer
 
-Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
+Default value:
+
+ `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
 implementations: 
@@ -808,14 +949,18 @@ implementations:
 
 ==== monitorIPChanges
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Check each Redis hostname defined in the configuration for IP address
 changes during the scan process 
 
 ==== subscriptionConnectionMinimumIdleSize
 
-Default value: `1`
+Default value:
+
+ `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
 Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`,
@@ -826,7 +971,9 @@ Factories.
 
 ==== subscriptionConnectionPoolSize
 
-Default value: `50`
+Default value:
+
+ `50`
 
 Maximum connection pool size for subscription (pub/sub) channels. Used
 by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -836,38 +983,50 @@ Cached Region Factories.
 
 ==== slaveConnectionMinimumIdleSize
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Redis `slave' node minimum idle connection amount for each slave node
 
 ==== slaveConnectionPoolSize 
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `slave' node maximum connection pool size for each slave node
 
 ==== masterConnectionMinimumIdleSize 
 
-Default value: `24`
+Default value:
+
+ `24`
 
 The minimum idle connection amount is per Redis master node.
 
 ==== masterConnectionPoolSize
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `master' node maximum connection pool size 
 
 ==== idleConnectionTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 If a pooled connection is not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== readMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for read operations. Available values: 
 
@@ -878,7 +1037,9 @@ available,
 
 ==== subscriptionMode
 
-Default value: `MASTER`
+Default value:
+
+ `MASTER`
 
 Set node type used for subscription operations. Available values: 
 
@@ -887,19 +1048,25 @@ Set node type used for subscription operations. Available values:
 
 ==== connectTimeout
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 Timeout during connecting to any Redis server. 
 
 ==== timeout 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Redis server response timeout. It starts to count down after a Redis command is successfully sent. Value in milliseconds. 
 
 ==== retryAttempts
  
-Default value: `3`
+Default value:
+
+ `3`
 
 An error will be thrown if a Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it is sent successfully, then *timeout* will be
@@ -907,13 +1074,17 @@ started.
 
 ==== retryInterval
 
-Default value: `1500`
+Default value:
+
+ `1500`
 
 Time interval after which another attempt to send a Redis command will be executed. Value in milliseconds. 
 
 ==== failedSlaveReconnectionInterval 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 The interval of Redis Slave reconnection attempts when excluded from
 the internal list of available servers. On each timeout event, Redisson tries
@@ -921,7 +1092,9 @@ to connect to a disconnected Redis server. Value in milliseconds.
 
 ==== failedSlaveNodeDetector
 
-Default value: `org.redisson.client.FailedConnectionDetector`
+Default value:
+
+ `org.redisson.client.FailedConnectionDetector`
 
 Defines failed Redis Slave node detector object, which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
@@ -943,24 +1116,32 @@ milliseconds.
 
 ==== database
 
-Default value: `0`
+Default value:
+
+ `0`
 
 Database index used for Redis connection 
 
 ==== password 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis server authentication. 
 
 ==== username 
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
-Default value: empty
+Default value:
+
+ empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
@@ -969,95 +1150,125 @@ dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
 
-Default value: `5`
+Default value:
+
+ `5`
 
 Subscriptions per subscribing connection limit. Used by `RTopic`,
 `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap`, `RLocalCachedMapCache` objects, and Hibernate Local Cached Region Factories.
 
 ==== clientName
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Name of client connection
 
 ==== sslProtocols
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables SSL endpoint identification during handshaking, which prevents
 man-in-the-middle attacks.
 
 ==== sslProvider
 
-Default value: `JDK`
+Default value:
+
+ `JDK`
 
 Defines the SSL provider (JDK or OPENSSL) used to handle SSL connections.
 OPENSSL considered as a faster implementation and requires https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-tcnative-boringssl-static] to be added in the classpath.
 
 ==== sslTruststore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL truststore
 
 ==== sslKeystoreType
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines SSL keystore type.
 
 ==== sslKeystore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines path to the SSL keystore. It stores private key and certificates corresponding to their public keys. Used if the server side of an SSL connection requires client authentication. SSL keystore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL keystore
 
 ==== pingConnectionInterval
 
-Default value: `30000`
+Default value:
+
+ `30000`
 
 PING command sending interval, per connection to Redis. Defined in milliseconds. Set to `0` to disable.
 
 ==== keepAlive
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Enables TCP keepAlive for connections.
 
 ==== tcpNoDelay
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables TCP noDelay for connections.
 
 ==== nameMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Name mapper which maps Redisson object name to a custom name. Applied to all Redisson objects.
 
 ==== commandMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Command mapper which maps Redis command name to a custom name. Applied to all Redis commands.
 
@@ -1134,14 +1345,18 @@ SSL connection.
 
 ==== subscriptionConnectionMinimumIdleSize
 
-Default value: `1`
+Default value:
+
+ `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
 Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap` `RLocalCachedMapCache` objects and Hibernate Local Cached Region Factories.
 
 ==== subscriptionConnectionPoolSize
 
-Default value: `50`
+Default value:
+
+ `50`
 
 Maximum connection pool size for subscription (pub/sub) channels. Used
 by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -1151,19 +1366,25 @@ Cached Region Factories.
 
 ==== connectionMinimumIdleSize
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Minimum idle Redis connection amount.
 
 ==== connectionPoolSize
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis connection maximum pool size.
 
 ==== dnsMonitoringInterval
 
-Default value: `5000`
+Default value:
+
+ `5000`
 
 DNS change monitoring interval. Applications must ensure the JVM DNS
 cache TTL is low enough to support this. Set `-1` to disable. Multiple
@@ -1171,26 +1392,34 @@ IP bindings for a single hostname are supported in https://github.com/redisson/r
 
 ==== idleConnectionTimeout
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 If a pooled connection is not used for a timeout time and current connections
 amount bigger than minimum idle connection pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 Timeout during connecting to any Redis server. 
 
 ==== timeout 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Redis server response timeout. It starts to count down once a Redis command is successfully sent. Value in milliseconds. 
 
 ==== retryAttempts 
 
-Default value: `3`
+Default value:
+
+ `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after the defined *retryAttempts*. But if it is sent successfully, then *timeout* will be
@@ -1198,32 +1427,42 @@ started.
 
 ==== retryInterval
 
-Default value: `1500`
+Default value:
+
+ `1500`
 
 Time interval after which another attempt to send the Redis command will
 be executed. Value in milliseconds. 
 
 ==== database 
 
-Default value: `0`
+Default value:
+
+ `0`
 
 Database index used for Redis connection 
 
 ==== password 
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis server authentication.
 
 ==== username
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
-Default value: empty
+Default value:
+
+ empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
@@ -1232,40 +1471,52 @@ dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
 
-Default value: `5`
+Default value:
+
+ `5`
 
 Subscriptions per subscriber connection limit. Used by `RTopic`,
 `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap`, `RLocalCachedMapCache` objects and Hibernate Local Cached Region Factories.
 
 ==== subscriptionTimeout
 
-Default value: 7500
+Default value:
+
+ 7500
 
 Defines subscription timeout in milliseconds, applied per channel
 subscription.
 
 ==== clientName
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Name of client connection
 
 ==== sslProtocols
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables SSL endpoint identification during handshaking, which prevents man-in-the-middle attacks.
 
 ==== sslProvider
 
-Default value: `JDK`
+Default value:
+
+ `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
 OPENSSL is considered as the faster implementation and requires
@@ -1273,63 +1524,83 @@ https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-t
 
 ==== sslTruststore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL truststore
 
 ==== sslKeystoreType
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines SSL keystore type.
 
 ==== sslKeystore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL keystore
 
 ==== pingConnectionInterval
 
-Default value: `30000`
+Default value:
+
+ `30000`
 
 PING command sending interval, per connection to Redis. Defined in
 milliseconds. Set `0` to disable.
 
 ==== keepAlive
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Enables TCP keepAlive for connections.
 
 ==== tcpNoDelay
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables TCP noDelay for connections.
 
 ==== nameMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Name mapper which maps Redisson object name to a custom name.
 Applied to all Redisson objects.
 
 ==== commandMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Command mapper which maps Redis command name to a custom name.
 Applied to all Redis commands.
@@ -1390,13 +1661,17 @@ Sentinel connection mode is activated by the following line:
 
 ==== checkSentinelsList
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables sentinels list check during Redisson startup.
 
 ==== dnsMonitoringInterval
 
-Default value: `5000`
+Default value:
+
+ `5000`
 
 Interval in milliseconds to check the endpoint’s DNS. Applications must
 ensure the JVM DNS cache TTL is low enough to support this. Set `-1` to
@@ -1404,7 +1679,9 @@ disable.
 
 ==== checkSlaveStatusWithSyncing
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Check if slave node `master-link-status` field has status `ok`.
 
@@ -1420,7 +1697,9 @@ once could be added.
 
 ==== readMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for read operations. Available values:
  
@@ -1431,7 +1710,9 @@ available,
 
 ==== subscriptionMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for subscription operations. Available values:
  
@@ -1440,7 +1721,9 @@ Set node type used for subscription operations. Available values:
 
 ==== loadBalancer
 
-Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
+Default value:
+
+ `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
 implementations:
@@ -1452,7 +1735,9 @@ implementations:
 
 ==== subscriptionConnectionMinimumIdleSize
 
-Default value: `1`
+Default value:
+
+ `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
 Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`,
@@ -1463,7 +1748,9 @@ Factories.
 
 ==== subscriptionConnectionPoolSize
 
-Default value: `50`
+Default value:
+
+ `50`
 
 Maximum connection pool size for subscription (pub/sub) channels. Used
 by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -1473,51 +1760,67 @@ Cached Region Factories.
 
 ==== slaveConnectionMinimumIdleSize
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Redis `slave' node minimum idle connection amount for each slave node
 
 ==== slaveConnectionPoolSize 
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `slave' node maximum connection pool size for each slave node
 
 ==== masterConnectionMinimumIdleSize 
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Minimum idle connections amount per Redis master node.
 
 ==== masterConnectionPoolSize
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `master' node maximum connection pool size 
 
 ==== idleConnectionTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 If a pooled connection is not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 Timeout during connecting to any Redis server. 
 
 ==== timeout 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Redis server response timeout. Starts to count down when Redis command
 was successfully sent. Value in milliseconds. 
 
 ==== retryAttempts
 
-Default value: `3`
+Default value:
+
+ `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -1525,14 +1828,18 @@ started.
 
 ==== retryInterval
 
-Default value: `1500`
+Default value:
+
+ `1500`
 
 Time interval after which another one attempt to send Redis command will
 be executed. Value in milliseconds. 
 
 ==== failedSlaveReconnectionInterval 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Interval of Redis Slave reconnection attempts when it was excluded from
 internal list of available servers. On each timeout event Redisson tries
@@ -1540,7 +1847,9 @@ to connect to disconnected Redis server. Value in milliseconds.
 
 ==== failedSlaveNodeDetector
 
-Default value: `org.redisson.client.FailedConnectionDetector`
+Default value:
+
+ `org.redisson.client.FailedConnectionDetector`
 
 Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
@@ -1563,39 +1872,51 @@ milliseconds.
 
 ==== database
 
-Default value: `0`
+Default value:
+
+ `0`
 
 Database index used for Redis connection
 
 ==== password
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis servers authentication.
 
 ==== username
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis servers authentication. Requires Redis 6.0
 
 ==== sentinelPassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis Sentinel servers authentication. Used only if
 Sentinel password differs from master’s and slave’s.
 
 ==== sentinelUsername
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis Sentinel servers for authentication. Used only if
 Sentinel username differs from master’s and slave’s. Requires Redis 6.0
 
 === credentialsResolver
 
-Default value: empty
+Default value:
+
+ empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
@@ -1604,13 +1925,17 @@ dynamically changing Redis credentials.
 
 ==== sentinelsDiscovery
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables sentinels discovery
 
 ==== subscriptionsPerConnection
 
-Default value: `5`
+Default value:
+
+ `5`
 
 Subscriptions per subscriber connection limit. Used by `RTopic`,
 `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -1620,34 +1945,44 @@ Cached Region Factories.
 
 ==== subscriptionTimeout
 
-Default value: 7500
+Default value:
+
+ 7500
 
 Defines subscription timeout in milliseconds applied per channel
 subscription.
 
 ==== clientName
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Name of client connection
 
 ==== sslProtocols
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables SSL endpoint identification during handshaking, which prevents
 man-in-the-middle attacks.
 
 ==== sslProvider
 
-Default value: `JDK`
+Default value:
+
+ `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
 OPENSSL is considered as a faster implementation and requires
@@ -1656,7 +1991,9 @@ to be added in the classpath.
 
 ==== sslTruststore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines path to the SSL truststore. It stores certificates which is used
 to identify the server side of an SSL connection. SSL truststore is read on
@@ -1664,19 +2001,25 @@ each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL truststore
 
 ==== sslKeystoreType
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines SSL keystore type.
 
 ==== sslKeystore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines path to the SSL keystore. It stores private key and certificates
 corresponding to their public keys. Used if the server side of an SSL
@@ -1685,32 +2028,42 @@ new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL keystore
 
 ==== pingConnectionInterval
 
-Default value: `30000`
+Default value:
+
+ `30000`
 
 PING command sending interval per connection to Redis. Defined in
 milliseconds. Set `0` to disable.
 
 ==== keepAlive
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Enables TCP keepAlive for connections.
 
 ==== tcpNoDelay
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables TCP noDelay for connections.
 
 ==== natMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines NAT mapper interface which maps Redis URI object and applied to
 all Redis connections. Can be used to map internal Redis server IPs to
@@ -1720,14 +2073,18 @@ external ones. Available implementations:
 
 ==== nameMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Name mapper which maps Redisson object name to a custom name.
 Applied to all Redisson objects.
 
 ==== commandMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Command mapper which maps Redis command name to a custom name.
 Applied to all Redis commands.
@@ -1800,7 +2157,9 @@ Master slave connection mode is activated by the following line:
 
 ==== dnsMonitoringInterval
 
-Default value: `5000`
+Default value:
+
+ `5000`
 
 Interval in milliseconds to check the endpoint’s DNS. Applications must
 ensure the JVM DNS cache TTL is low enough to support this. Set `-1` to
@@ -1818,7 +2177,9 @@ once could be added. Use `rediss://` protocol for SSL connection.
 
 ==== readMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for read operations. Available values:
  
@@ -1829,7 +2190,9 @@ available,
 
 ==== subscriptionMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for subscription operations. Available values:
  
@@ -1838,7 +2201,9 @@ Set node type used for subscription operations. Available values:
 
 ==== loadBalancer
 
-Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
+Default value:
+
+ `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
 implementations:
@@ -1850,7 +2215,9 @@ implementations:
 
 ==== subscriptionConnectionMinimumIdleSize
 
-Default value: `1`
+Default value:
+
+ `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
 Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`,
@@ -1861,7 +2228,9 @@ Factories.
 
 ==== subscriptionConnectionPoolSize
 
-Default value: `50`
+Default value:
+
+ `50`
 
 Maximum connection pool size for subscription (pub/sub) channels. Used
 by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -1871,51 +2240,67 @@ Cached Region Factories.
 
 ==== slaveConnectionMinimumIdleSize
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Redis `slave' node minimum idle connection amount for each slave node
 
 ==== slaveConnectionPoolSize 
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `slave' node maximum connection pool size for each slave node
 
 ==== masterConnectionMinimumIdleSize 
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Minimum idle connections amount per Redis master node.
 
 ==== masterConnectionPoolSize
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `master' node maximum connection pool size 
 
 ==== idleConnectionTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 If a pooled connection is not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 Timeout during connecting to any Redis server. 
 
 ==== timeout 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Redis server response timeout. Starts to count down when Redis command
 was successfully sent. Value in milliseconds. 
 
 ==== retryAttempts 
 
-Default value: `3`
+Default value:
+
+ `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -1923,14 +2308,18 @@ started.
 
 ==== retryInterval
 
-Default value: `1500`
+Default value:
+
+ `1500`
 
 Time interval after which another one attempt to send Redis command will
 be executed. Value in milliseconds. 
 
 ==== failedSlaveReconnectionInterval 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Interval of Redis Slave reconnection attempts when it was excluded from
 internal list of available servers. On each timeout event Redisson tries
@@ -1938,7 +2327,9 @@ to connect to disconnected Redis server. Value in milliseconds.
 
 ==== failedSlaveNodeDetector
 
-Default value: `org.redisson.client.FailedConnectionDetector`
+Default value:
+
+ `org.redisson.client.FailedConnectionDetector`
 
 Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
@@ -1961,25 +2352,33 @@ milliseconds.
 
 ==== database
 
-Default value: `0`
+Default value:
+
+ `0`
 
 Database index used for Redis connection 
 
 ==== password 
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis server authentication. 
 
 ==== username 
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
-Default value: empty
+Default value:
+
+ empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
@@ -1988,7 +2387,9 @@ dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
 
-Default value: `5`
+Default value:
+
+ `5`
 
 Subscriptions per subscriber connection limit. Used by `RTopic`,
 `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -1998,34 +2399,44 @@ Cached Region Factories.
 
 ==== subscriptionTimeout
 
-Default value: 7500
+Default value:
+
+ 7500
 
 Defines subscription timeout in milliseconds applied per channel
 subscription.
 
 ==== clientName
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Name of client connection
 
 ==== sslProtocols
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables SSL endpoint identification during handshaking, which prevents
 man-in-the-middle attacks.
 
 ==== sslProvider
 
-Default value: `JDK`
+Default value:
+
+ `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
 OPENSSL considered as a faster implementation and requires
@@ -2034,7 +2445,9 @@ to be added in the classpath.
 
 ==== sslTruststore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines path to the SSL truststore. It stores certificates which is used
 to identify the server side of an SSL connection. SSL truststore is read on
@@ -2042,19 +2455,25 @@ each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL truststore
 
 ==== sslKeystoreType
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines SSL keystore type.
 
 ==== sslKeystore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines path to the SSL keystore. It stores private key and certificates
 corresponding to their public keys. Used if the server side of an SSL
@@ -2063,39 +2482,51 @@ new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL keystore
 
 ==== pingConnectionInterval
 
-Default value: `30000`
+Default value:
+
+ `30000`
 
 PING command sending interval per connection to Redis. Defined in
 milliseconds. Set `0` to disable.
 
 ==== keepAlive
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Enables TCP keepAlive for connections.
 
 ==== tcpNoDelay
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables TCP noDelay for connections.
 
 ==== nameMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Name mapper which maps Redisson object name to a custom name.
 Applied to all Redisson objects.
 
 ==== commandMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Command mapper which maps Redis command name to a custom name.
 Applied to all Redis commands.
@@ -2201,7 +2632,9 @@ protocol for SSL connection.
 
 ==== subscriptionConnectionMinimumIdleSize
 
-Default value: `1`
+Default value:
+
+ `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
 Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`,
@@ -2212,7 +2645,9 @@ Factories.
 
 ==== subscriptionConnectionPoolSize
 
-Default value: `50`
+Default value:
+
+ `50`
 
 Maximum connection pool size for subscription (pub/sub) channels. Used
 by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -2222,19 +2657,25 @@ Cached Region Factories.
 
 ==== connectionMinimumIdleSize
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Minimum idle Redis connection amount.
 
 ==== connectionPoolSize
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis connection maximum pool size.
 
 ==== scanMode
 
-Default value: `PING`
+Default value:
+
+ `PING`
 
 Defines scan mode to detect failed Redis nodes. Available values:
  
@@ -2246,7 +2687,9 @@ subscribe or receive message then it considered as a failed node.
 
 ==== proxyMode
 
-Default value: `ALL_ACTIVE`
+Default value:
+
+ `ALL_ACTIVE`
 
 Defines proxy mode.
  
@@ -2260,46 +2703,60 @@ read/write operations.
 
 ==== scanInterval
 
-Default value: `5000`
+Default value:
+
+ `5000`
 
 Defines proxy nodes scan interval in milliseconds. `0` means disable.
 
 ==== scanTimeout
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Defines proxy nodes scan timeout in milliseconds applied per Redis node.
 
 ==== dnsMonitoringInterval
 
-Default value: `5000`
+Default value:
+
+ `5000`
 
 DNS change monitoring interval. Applications must ensure the JVM DNS
 cache TTL is low enough to support this. Set `-1` to disable.
 
 ==== idleConnectionTimeout
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 If a pooled connection is not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 Timeout during connecting to any Redis server. 
 
 ==== timeout 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Redis server response timeout. Starts to count down when Redis command
 was successfully sent. Value in milliseconds. 
 
 ==== retryAttempts 
 
-Default value: `3`
+Default value:
+
+ `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -2307,14 +2764,18 @@ started.
 
 ==== retryInterval
 
-Default value: `1500`
+Default value:
+
+ `1500`
 
 Time interval after which another one attempt to send Redis command will
 be executed. Value in milliseconds. 
 
 ==== database 
 
-Default value: `0`
+Default value:
+
+ `0`
 
 Database index used for Redis connection
 
@@ -2324,11 +2785,15 @@ When the retry interval reached Redisson tries to connect to the
 disconnected Redis node. After successful reconnection Redis node is
 become available for read/write operations execution.
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 ==== failedSlaveNodeDetector
 
-Default value: `org.redisson.client.FailedConnectionDetector`
+Default value:
+
+ `org.redisson.client.FailedConnectionDetector`
 
 Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
@@ -2351,19 +2816,25 @@ milliseconds.
 
 ==== password
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis server authentication.
 
 ==== username
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
-Default value: empty
+Default value:
+
+ empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
@@ -2372,7 +2843,9 @@ dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
 
-Default value: `5`
+Default value:
+
+ `5`
 
 Subscriptions per subscriber connection limit. Used by `RTopic`,
 `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -2382,34 +2855,44 @@ Cached Region Factories.
 
 ==== subscriptionTimeout
 
-Default value: 7500
+Default value:
+
+ 7500
 
 Defines subscription timeout in milliseconds applied per channel
 subscription.
 
 ==== clientName
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Name of client connection
 
 ==== sslProtocols
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables SSL endpoint identification during handshaking, which prevents
 man-in-the-middle attacks.
 
 ==== sslProvider
 
-Default value: `JDK`
+Default value:
+
+ `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
 OPENSSL considered as a faster implementation and requires
@@ -2418,7 +2901,9 @@ to be added in the classpath.
 
 ==== sslTruststore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines path to the SSL truststore. It stores certificates which is used
 to identify the server side of an SSL connection. SSL truststore is read on
@@ -2426,19 +2911,25 @@ each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL truststore
 
 ==== sslKeystoreType
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines SSL keystore type.
 
 ==== sslKeystore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines path to the SSL keystore. It stores private key and certificates
 corresponding to their public keys. Used if the server side of an SSL
@@ -2447,32 +2938,42 @@ new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL keystore
 
 ==== pingConnectionInterval
 
-Default value: `30000`
+Default value:
+
+ `30000`
 
 PING command sending interval per connection to Redis. Defined in
 milliseconds. Set `0` to disable.
 
 ==== keepAlive
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Enables TCP keepAlive for connections.
 
 ==== tcpNoDelay
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables TCP noDelay for connections.
 
 ==== loadBalancer
 
-Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
+Default value:
+
+ `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
 implementations: 
@@ -2483,14 +2984,18 @@ implementations:
 
 ==== nameMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Name mapper which maps Redisson object name to a custom name.
 Applied to all Redisson objects.
 
 ==== commandMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Command mapper which maps Redis command name to a custom name.
 Applied to all Redis commands.
@@ -2565,7 +3070,9 @@ Multi clusters connection mode is activated by the following line:
 
 ==== checkSlotsCoverage
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables cluster slots check during Redisson startup.
 
@@ -2578,7 +3085,9 @@ connection.
 
 ==== scanInterval
 
-Default value: `5000`
+Default value:
+
+ `5000`
 
 Scan interval in milliseconds. Applied to Redis clusters topology scan
 and primary and secondary clusters scan process. Handles failover
@@ -2587,7 +3096,9 @@ master nodes becomes the primary.
 
 ==== slots
 
-Default value: `231`
+Default value:
+
+ `231`
 
 Partitions amount used for data partitioning. Data partitioning
 supported by
@@ -2606,7 +3117,9 @@ Cache] structures.
 
 ==== readMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for read operations. Available values:
  
@@ -2617,7 +3130,9 @@ available,
 
 ==== datastoreMode
 
-Default value: `ACTIVE_PASSIVE`
+Default value:
+
+ `ACTIVE_PASSIVE`
 
 Defines Datastore mode. 
 Available values: 
@@ -2630,7 +3145,9 @@ operations only
 
 ==== subscriptionMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for subscription operations. Available values: 
 `SLAVE` - Subscribe to slave nodes, 
@@ -2638,7 +3155,9 @@ Set node type used for subscription operations. Available values:
 
 ==== shardedSubscriptionMode
 
-Default value: `AUTO`
+Default value:
+
+ `AUTO`
 
 Defines whether to use sharded subscription feature available in Redis
 7.0. Used by `RMapCache`, `RLocalCachedMap`, `RCountDownLatch`,
@@ -2647,7 +3166,9 @@ Defines whether to use sharded subscription feature available in Redis
 
 ==== replicationMode
 
-Default value: `NONE`
+Default value:
+
+ `NONE`
 
 Defines replication of the primary Redis Cluster with secondary Redis
 Clusters.
@@ -2663,7 +3184,9 @@ wait for replication to complete on other Redis setups
 
 ==== loadBalancer
 
-Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
+Default value:
+
+ `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
 implementations: 
@@ -2675,7 +3198,9 @@ implementations:
 
 ==== primaryDiscoveryMode
 
-Default value: `AUTO`
+Default value:
+
+ `AUTO`
 
 Defines primary Redis Cluster selection mode.
 
@@ -2688,7 +3213,9 @@ are available
 
 ==== subscriptionConnectionMinimumIdleSize
 
-Default value: `1`
+Default value:
+
+ `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
 Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`,
@@ -2699,7 +3226,9 @@ Factories.
 
 ==== subscriptionConnectionPoolSize
 
-Default value: `50`
+Default value:
+
+ `50`
 
 Maximum connection pool size for subscription (pub/sub) channels. Used
 by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -2709,49 +3238,65 @@ Cached Region Factories.
 
 ==== slaveConnectionMinimumIdleSize 
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Redis `slave' node minimum idle connection amount for each slave node.
 
 ==== slaveConnectionPoolSize
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `slave' node maximum connection pool size for each slave node
 
 ==== masterConnectionMinimumIdleSize 
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Minimum idle connections amount per Redis master node.
 
 ==== masterConnectionPoolSize
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Redis `master' node maximum connection pool size 
 
 ==== idleConnectionTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 If a pooled connection is not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
-==== connectTimeout Default value: `10000`
+==== connectTimeout Default value:
+
+ `10000`
 
 Timeout in milliseconds during connecting to any Redis server. 
 
 ==== timeout 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Redis server response timeout in milliseconds. Starts to count down when
 Redis command was successfully sent. 
 
 ==== retryAttempts 
 
-Default value: `3`
+Default value:
+
+ `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -2759,14 +3304,18 @@ started.
 
 ==== retryInterval
 
-Default value: `1500`
+Default value:
+
+ `1500`
 
 Time interval in milliseconds after which another one attempt to send
 Redis command will be executed.
 
 ==== failedSlaveReconnectionInterval
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Interval of Redis Slave reconnection attempts when it was excluded from
 internal list of available servers. On each timeout event Redisson tries
@@ -2774,7 +3323,9 @@ to connect to disconnected Redis server. Value in milliseconds.
 
 ==== failedSlaveNodeDetector
 
-Default value: `org.redisson.client.FailedConnectionDetector`
+Default value:
+
+ `org.redisson.client.FailedConnectionDetector`
 
 Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
@@ -2797,19 +3348,25 @@ milliseconds.
 
 ==== password
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis server authentication.
 
 ==== username
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis server authentication. Requires Redis 6.0
 
 === credentialsResolver
 
-Default value: empty
+Default value:
+
+ empty
 
 Defines Credentials resolver, which is invoked during connection for
 Redis server authentication. Returns Credentials object per Redis node
@@ -2818,7 +3375,9 @@ dynamically changing Redis credentials.
 
 ==== subscriptionsPerConnection
 
-Default value: `5`
+Default value:
+
+ `5`
 
 Subscriptions per subscriber connection limit. Used by `RTopic`,
 `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -2828,70 +3387,92 @@ Cached Region Factories.
 
 ==== subscriptionTimeout
 
-Default value: 7500
+Default value:
+
+ 7500
 
 Defines subscription timeout in milliseconds applied per channel
 subscription.
 
 ==== clientName
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Name of client connection.
 
 ==== sslProtocols
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables SSL endpoint identification during handshaking, which prevents
 man-in-the-middle attacks.
 
 ==== sslProvider
 
-Default value: `JDK`
+Default value:
+
+ `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
 OPENSSL is considered the faster implementation and requires https://repo1.maven.org/maven2/io/netty/netty-tcnative-boringssl-static/[netty-tcnative-boringssl-static] to be added in the classpath.
 
 ==== sslTruststore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 ==== sslTruststorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL truststore
 
 ==== sslKeystoreType
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines SSL keystore type.
 
 ==== sslKeystore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslKeystorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL keystore
 
 ==== pingConnectionInterval
 
-Default value: `30000`
+Default value:
+
+ `30000`
 
 This setting allows to detect and reconnect broken connections using
 PING command. PING command sending interval defined in milliseconds.
@@ -2900,19 +3481,25 @@ for closed connections. Set `0` to disable.
 
 ==== keepAlive
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Enables TCP keepAlive for connections.
 
 ==== tcpNoDelay
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables TCP noDelay for connections.
 
 ==== natMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines NAT mapper interface, which maps Redis URI object and applied to
 all Redis connections. Can be used to map internal Redis server IPs to
@@ -2922,14 +3509,18 @@ external ones. Available implementations:
 
 ==== nameMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Name mapper which maps Redisson object name to a custom name.
 Applied to all Redisson objects.
 
 ==== commandMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Command mapper which maps Redis command name to a custom name.
 Applied to all Redis commands.
@@ -3018,7 +3609,9 @@ Multi Sentinel connection mode is activated by the following line:
 
 ==== replicationMode
 
-Default value: `NONE`
+Default value:
+
+ `NONE`
 
 Defines replication of primary Redis Sentinel setup with secondary Redis
 Sentinel setups.
@@ -3033,13 +3626,17 @@ wait for replication to complete on other Redis setups
 
 ==== checkSentinelsList
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables sentinels list check during Redisson startup.
 
 ==== dnsMonitoringInterval
 
-Default value: `5000`
+Default value:
+
+ `5000`
 
 Interval in milliseconds to check the endpoint’s DNS. Applications must
 ensure the JVM DNS cache TTL is low enough to support this. Set `-1` to
@@ -3047,7 +3644,9 @@ disable.
 
 ==== checkSlaveStatusWithSyncing
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Check if slave node `master-link-status` field has status `ok`.
 
@@ -3063,7 +3662,9 @@ once could be added.
 
 ==== readMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for read operations. Available values:
  
@@ -3074,7 +3675,9 @@ available,
 
 ==== subscriptionMode
 
-Default value: `SLAVE`
+Default value:
+
+ `SLAVE`
 
 Set node type used for subscription operations. Available values:
  
@@ -3083,7 +3686,9 @@ Set node type used for subscription operations. Available values:
 
 ==== loadBalancer
 
-Default value: `org.redisson.connection.balancer.RoundRobinLoadBalancer`
+Default value:
+
+ `org.redisson.connection.balancer.RoundRobinLoadBalancer`
 
 Сonnection load balancer for multiple Redis servers. Available
 implementations: 
@@ -3094,7 +3699,9 @@ implementations:
 
 ==== subscriptionConnectionMinimumIdleSize
 
-Default value: `1`
+Default value:
+
+ `1`
 
 Minimum idle connection pool size for subscription (pub/sub) channels.
 Used by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`,
@@ -3105,7 +3712,9 @@ Factories.
 
 ==== subscriptionConnectionPoolSize
 
-Default value: `50`
+Default value:
+
+ `50`
 
 Maximum connection pool size for subscription (pub/sub) channels. Used
 by `RTopic`, `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`,
@@ -3115,51 +3724,67 @@ Cached Region Factories.
 
 ==== slaveConnectionMinimumIdleSize
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Redis `slave' node minimum idle connection amount for each slave node
 
 ==== slaveConnectionPoolSize 
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `slave' node maximum connection pool size for each slave node
 
 ==== masterConnectionMinimumIdleSize 
 
-Default value: `24`
+Default value:
+
+ `24`
 
 Minimum idle connections amount per Redis master node.
 
 ==== masterConnectionPoolSize
 
-Default value: `64`
+Default value:
+
+ `64`
 
 Redis `master' node maximum connection pool size 
 
 ==== idleConnectionTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 If a pooled connection is not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
 ==== connectTimeout 
 
-Default value: `10000`
+Default value:
+
+ `10000`
 
 Timeout during connecting to any Redis server. 
 
 ==== timeout 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Redis server response timeout. Starts to count down when Redis command
 was successfully sent. Value in milliseconds. 
 
 ==== retryAttempts 
 
-Default value: `3`
+Default value:
+
+ `3`
 
 Error will be thrown if Redis command can’t be sent to Redis server
 after *retryAttempts*. But if it sent successfully then *timeout* will be
@@ -3167,14 +3792,18 @@ started.
 
 ==== retryInterval
 
-Default value: `1500`
+Default value:
+
+ `1500`
 
 Time interval after which another one attempt to send Redis command will
 be executed. Value in milliseconds. 
 
 ==== failedSlaveReconnectionInterval 
 
-Default value: `3000`
+Default value:
+
+ `3000`
 
 Interval of Redis Slave reconnection attempts when it was excluded from
 internal list of available servers. On each timeout event Redisson tries
@@ -3182,7 +3811,9 @@ to connect to disconnected Redis server. Value in milliseconds.
 
 ==== failedSlaveNodeDetector
 
-Default value: `org.redisson.client.FailedConnectionDetector`
+Default value:
+
+ `org.redisson.client.FailedConnectionDetector`
 
 Defines failed Redis Slave node detector object which implements failed
 node detection logic via `org.redisson.client.FailedNodeDetector`
@@ -3205,83 +3836,109 @@ milliseconds.
 
 ==== database
 
-Default value: `0`
+Default value:
+
+ `0`
 
 Database index used for Redis connection
 
 ==== password
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis servers authentication.
 
 ==== username
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis servers authentication. Requires Redis 6.0
 
 ==== sentinelPassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Password for Redis Sentinel servers authentication. Used only if Sentinel password differs from master’s and slave’s.
 
 ==== sentinelUsername
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Username for Redis Sentinel servers for authentication. Used only if Sentinel username differs from master’s and slave’s. Requires Redis 6.0
 
 === credentialsResolver
 
-Default value: empty
+Default value:
+
+ empty
 
 Defines Credentials resolver, which is invoked during connection for Redis server authentication. Returns Credentials object per Redis node address, it contains `username` and `password` fields. Allows you to specify dynamically changing Redis credentials.
 
 ==== sentinelsDiscovery
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables sentinels discovery
 
 ==== subscriptionsPerConnection
 
-Default value: `5`
+Default value:
+
+ `5`
 
 Subscriptions per subscriber connection limit. Used by `RTopic`,
 `RPatternTopic`, `RLock`, `RSemaphore`, `RCountDownLatch`, `RClusteredLocalCachedMap`, `RClusteredLocalCachedMapCache`, `RLocalCachedMap`, `RLocalCachedMapCache` objects and Hibernate Local Cached Region Factories.
 
 ==== subscriptionTimeout
 
-Default value: 7500
+Default value:
+
+ 7500
 
 Defines subscription timeout in milliseconds applied per channel
 subscription.
 
 ==== clientName
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Name of client connection
 
 ==== sslProtocols
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines array of allowed SSL protocols. 
 Example values: `TLSv1.3`, `TLSv1.2`, `TLSv1.1`, `TLSv1`
 
 ==== sslEnableEndpointIdentification
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables SSL endpoint identification during handshaking, which prevents
 man-in-the-middle attacks.
 
 ==== sslProvider
 
-Default value: `JDK`
+Default value:
+
+ `JDK`
 
 Defines SSL provider (JDK or OPENSSL) used to handle SSL connections.
 OPENSSL considered as a faster implementation and requires
@@ -3290,57 +3947,75 @@ to be added in the classpath.
 
 ==== sslTruststore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines the path to the SSL truststore. It stores certificates which are used to identify the server side of an SSL connections. The SSL truststore is read on each new connection creation and can be dynamically reloaded.
 
 ==== sslTruststorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL truststore
 
 ==== sslKeystoreType
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines SSL keystore type.
 
 ==== sslKeystore
 
-Default value: `null`
+Default value:
+
+ `null`
 
 efines the path to the SSL keystore. It stores certificates which are used to identify the server side of an SSL connections. The SSL keystore is read on each new connection creation and can be dynamically reloaded.
 
 
 ==== sslKeystorePassword
 
-Default value: `null`
+Default value:
+
+ `null`
 
 Defines password for SSL keystore
 
 ==== pingConnectionInterval
 
-Default value: `30000`
+Default value:
+
+ `30000`
 
 PING command sending interval per connection to Redis. Defined in
 milliseconds. Set `0` to disable.
 
 ==== keepAlive
 
-Default value: `false`
+Default value:
+
+ `false`
 
 Enables TCP keepAlive for connections.
 
 ==== tcpNoDelay
 
-Default value: `true`
+Default value:
+
+ `true`
 
 Enables TCP noDelay for connections.
 
 ==== natMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines NAT mapper interface which maps Redis URI object and applied to
 all Redis connections. Can be used to map internal Redis server IPs to
@@ -3350,14 +4025,18 @@ external ones. Available implementations:
 
 ==== nameMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Name mapper which maps Redisson object name to a custom name.
 Applied to all Redisson objects.
 
 ==== commandMapper
 
-Default value: no mapper
+Default value:
+
+ no mapper
 
 Defines Command mapper which maps Redis command name to a custom name.
 Applied to all Redis commands.
