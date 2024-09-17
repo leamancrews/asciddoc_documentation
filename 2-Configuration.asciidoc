@@ -3277,7 +3277,9 @@ Default value:
 If a pooled connection is not used for a timeout time and current connections
 amount bigger than minimum idle connections pool size, then it will be closed and removed from the pool. Value in milliseconds. 
 
-==== connectTimeout Default value:
+==== connectTimeout 
+
+Default value:
 
  `10000`
 
